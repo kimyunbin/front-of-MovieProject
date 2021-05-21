@@ -6,9 +6,9 @@
         <div class="formBx">
           <form>
             <h2>Sign In</h2>
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
-            <input type="submit" placeholder="Login">
+            <input type="text" placeholder="Username" id="loginUsername" v-model="credentials.username">
+            <input type="password" placeholder="Password" id="loginPassword" v-model="credentials.password">
+            <input type="submit" placeholder="Login" @click="login" @keyup.enter="login">
             <p class="signup">don't have an account? <a href="#" @click="toggleForm">Sign up.</a></p>
           </form>
         </div>
@@ -18,11 +18,11 @@
         <div class="formBx">
           <form>
             <h2>Create an account</h2>
-            <input type="text" placeholder="Username" id="username">
-            <input type="text" placeholder="Email Address" id="email">
-            <input type="password" placeholder="create Password" id="password">
-            <input type="password" placeholder="Confirm Password" id="passwordConfirmation">
-            <input type="submit" placeholder="Sign Up">
+            <input type="text" placeholder="Username" id="createUsername" v-model="credentials.username">
+            <input type="text" placeholder="Email Address" id="createEmail" v-model="credentials.email">
+            <input type="password" placeholder="create Password" id="createPassword" v-model="credentials.password">
+            <input type="password" placeholder="Confirm Password" id="createPasswordConfirmation" v-model="credentials.passwordConfirmation">
+            <input type="submit" placeholder="Sign Up" @click="signup(credentials)" @keyup.enter="signup(credentials)">
             <p class="signup">Already have an account? <a href="#" @click="toggleForm">Sign in.</a></p>
           </form>
         </div>
@@ -34,10 +34,65 @@
 </template>
 
 <script>
+import axios from 'axios'
+import _ from 'lodash'
 export default {
   name : 'Login',
-
+  data: function () {
+    return {
+      credentials: {
+        username: null,
+        email:null,
+        password: null,
+        passwordConfirmation: null,
+      }
+    }
+  },
   methods: {
+    login: function () {
+      const loginItem = {
+        username: this.credentials.username,
+        password: this.credentials.password,
+      }
+      if (_.trim(this.credentials.username)){
+        axios({
+          method: 'post',
+          url: 'http://127.0.0.1:8000/accounts/login/',
+          data: loginItem
+        })
+        .then(res => {
+          console.log(res)
+          this.$store.dispatch('login',res)
+          this.$router.push({ name: 'Movies'})
+          // commit('LOGIN',res)
+          // localStorage.setItem('jwt', res.data.token)
+          // this.$emit('login')
+          // this.$router.push({ name: 'Intro' })
+        })
+        .catch(err => {
+          console.log(err)
+        })
+        
+      }
+      
+      this.username=''
+      this.password=''
+      
+    },
+    signup: function () {
+      axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/accounts/signup/',
+        data: this.credentials,
+      })
+        .then(res => {
+          console.log(res)
+          this.$router.push({ name: 'Login' })
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
     toggleForm : function (){
       const container = document.querySelector('.container');
       const section = document.querySelector('section');
