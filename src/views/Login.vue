@@ -4,7 +4,7 @@
       <div class="user signinBx">
         <div class="imgBx"><img src="../assets/login/lock.jpg" alt="lockimg"></div>
         <div class="formBx">
-          <form>
+          <form v-on:submit.prevent="login">
             <h2>Sign In</h2>
             <input type="text" placeholder="Username" id="loginUsername" v-model="credentials.username">
             <input type="password" placeholder="Password" id="loginPassword" v-model="credentials.password">
@@ -16,7 +16,7 @@
 
       <div class="user signupBx">
         <div class="formBx">
-          <form>
+          <form v-on:submit.prevent="signup">
             <h2>Create an account</h2>
             <input type="text" placeholder="Username" id="createUsername" v-model="credentials.username">
             <input type="text" placeholder="Email Address" id="createEmail" v-model="credentials.email">

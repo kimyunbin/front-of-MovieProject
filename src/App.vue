@@ -59,6 +59,7 @@ export default {
     logout : function (){
       this.$store.dispatch('logout')
       this.$router.push({name : 'Login' })
+      
     },
 
     
@@ -101,3 +102,4 @@ export default {
   color: #42b983;
 }
 </style>
+
