@@ -9,12 +9,32 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <router-link :to="{name: 'Movies'}" class="nav-link active" >Home</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link :to="{name: 'Login'}" class="nav-link">Login</router-link>
-            </li>
+            <!-- 로그인시 보이는 것 -->
+            <span class="navbar-nav" v-if="token">
+
+              <li class="nav-item">
+                <router-link :to="{name: 'Movies'}" class="nav-link active" >Home</router-link>
+              </li>
+              <li class="nav-item">
+                <a class="btn nav-link active" @click="logout">Logout</a>
+              </li>
+              <li class="nav-item">
+                <router-link :to="{name: 'Login'}" class="nav-link active">Community</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link :to="`/mypage/${username}`" class="nav-link active">Mypage</router-link>
+              </li>
+            </span>
+            <!--  로그아웃 시 보이는 것 -->
+            <span class="navbar-nav" v-else>
+
+              <li class="nav-item" >
+                <router-link :to="{name: 'Login'}" class="nav-link active">Login</router-link>
+              </li>
+              <!-- <li class="nav-item">
+                <router-link :to="{name: 'Login'}" class="nav-link active" :isToggle="isTrue">Signup</router-link>
+              </li> -->
+            </span>
           </ul>
         </div>
       </div>
@@ -23,6 +43,41 @@
     <router-view/>
   </div>
 </template>
+<script>
+import jwt_decode from "jwt-decode";
+export default {
+  
+  name: 'App',
+  data: function () {
+    return {
+      isTrue: true,
+      username: ''
+    }
+  },
+
+  methods:{
+    logout : function (){
+      this.$store.dispatch('logout')
+      this.$router.push({name : 'Login' })
+    },
+
+    
+    
+  },
+  computed:{
+    token : function () {
+      return this.$store.state.token
+    },
+
+  },
+  created: function (){
+    const decoded = jwt_decode(this.token)
+    // console.log(decoded);
+    this.username = decoded.username
+  }
+ 
+}
+</script>
 
 <style>
 #app {

@@ -4,11 +4,11 @@
       <div class="user signinBx">
         <div class="imgBx"><img src="../assets/login/lock.jpg" alt="lockimg"></div>
         <div class="formBx">
-          <form>
+          <form v-on:submit.prevent="login">
             <h2>Sign In</h2>
             <input type="text" placeholder="Username" id="loginUsername" v-model="credentials.username">
             <input type="password" placeholder="Password" id="loginPassword" v-model="credentials.password">
-            <input type="submit" placeholder="Login" @click="login" @keyup.enter="login">
+            <input type="submit" placeholder="login">
             <p class="signup">don't have an account? <a href="#" @click="toggleForm">Sign up.</a></p>
           </form>
         </div>
@@ -16,7 +16,7 @@
 
       <div class="user signupBx">
         <div class="formBx">
-          <form>
+          <form v-on:submit.prevent="signup">
             <h2>Create an account</h2>
             <input type="text" placeholder="Username" id="createUsername" v-model="credentials.username">
             <input type="text" placeholder="Email Address" id="createEmail" v-model="credentials.email">
@@ -45,11 +45,17 @@ export default {
         email:null,
         password: null,
         passwordConfirmation: null,
-      }
+      },
+    }
+  },
+  props : {
+    isToggle : {
+      type:Boolean
     }
   },
   methods: {
-    login: function () {
+    login: function (event) {
+      event.preventDefault()
       const loginItem = {
         username: this.credentials.username,
         password: this.credentials.password,
@@ -87,7 +93,10 @@ export default {
       })
         .then(res => {
           console.log(res)
-          this.$router.push({ name: 'Login' })
+          this.credentials.username=''
+          this.credentials.password=''
+          this.toggleForm()
+          
         })
         .catch(err => {
           console.log(err)
@@ -98,6 +107,14 @@ export default {
       const section = document.querySelector('section');
       container.classList.toggle('active');
       section.classList.toggle('active');
+    },
+
+
+  },
+  created : function (){
+    console.log(this.isToggle)    
+    if(this.isToggle){
+      this.toggleForm()
     }
   }
 
