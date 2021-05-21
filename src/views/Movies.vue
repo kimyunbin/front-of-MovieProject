@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <MoviesSlider :movies="latest_movies"/>
+    <MoviesSlider :movies="highscore_movies"/>
   </div>
 </template>
 

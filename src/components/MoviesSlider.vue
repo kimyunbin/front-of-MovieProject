@@ -106,6 +106,7 @@ export default {
   display: block;
   width: 100%;
 }
+
 /* 경계선 */
 .contentBx
 {
@@ -126,9 +127,10 @@ export default {
   letter-spacing: 1px;
   color: #fff;
   transition: 0.5s;
+  mix-blend-mode : exclusion;
 }
 .contentBx:hover h2{
-  top: 68%;
+  top: 55%;
 }
 
 
@@ -168,26 +170,7 @@ export default {
   letter-spacing: 2px;
   margin-right: 10px;
 }
-.contentBx .size span
-{
-  width: 26px;
-  height: 26px;
-  text-align: center;
-  line-height: 26px;
-  font-size: 14px;
-  display: inline-block;
-  color: #111;
-  background: #fff;
-  transition: 0.5s;
-  color: #111;
-  border-radius: 4px;
-  margin-right: 7px;
-  cursor: pointer;
-}
-.swiper-slide .contentBx .size span:hover
-{
-  background: #9bdc28;
-}
+
 .swiper-slide .contentBx .color span
 {
   width: 20px;
