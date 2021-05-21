@@ -24,6 +24,7 @@ const routes = [
     component: Login,
     props: true
   },
+  
   {
     path:'/mypage/:username',
     name:'Mypage',

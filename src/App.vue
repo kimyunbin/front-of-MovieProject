@@ -59,6 +59,7 @@ export default {
     logout : function (){
       this.$store.dispatch('logout')
       this.$router.push({name : 'Login' })
+      
     },
 
     
