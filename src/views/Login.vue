@@ -36,6 +36,7 @@
 <script>
 import axios from 'axios'
 import _ from 'lodash'
+const BACKEND = process.env.VUE_APP_BACKEND_LINK
 export default {
   name : 'Login',
   data: function () {
@@ -64,7 +65,7 @@ export default {
       if (_.trim(this.credentials.username)){
         axios({
           method: 'post',
-          url: 'http://127.0.0.1:8000/accounts/login/',
+          url: `${BACKEND}accounts/login/`,
           data: loginItem
         })
         .then(res => {
@@ -89,7 +90,7 @@ export default {
     signup: function () {
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/accounts/signup/',
+        url: `${BACKEND}accounts/signup/`,
         data: this.credentials,
       })
         .then(res => {
