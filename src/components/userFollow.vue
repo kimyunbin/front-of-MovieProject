@@ -23,23 +23,6 @@ export default {
     }
   },
   methods:{
-    toggleClass: function(element,className){
-      var check = new RegExp("(\\s|^)" + className + "(\\s|$)"); 
-        if (check.test(element.className)) { 
-          element.className = element.className.replace(check, " ").trim(); 
-        } else { 
-          element.className += " " + className; 
-        } 
-    },
-    heart: function () {
-      const content = document.querySelector('.content')
-      content.classList.toggle('heart-active')
-      const heart = document.querySelector('.heart')
-      heart.classList.toggle('heart-active')
-    },
-    // myFilter: function () {
-    //   this.isActive = !this.isActive
-    // },
     setToken: function () {
       const config = {
         Authorization: `JWT ${this.$store.state.token}`

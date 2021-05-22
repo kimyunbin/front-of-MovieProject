@@ -19,7 +19,7 @@
                 <a class="btn nav-link active" @click="logout">Logout</a>
               </li>
               <li class="nav-item">
-                <router-link :to="{name: 'Login'}" class="nav-link active">Community</router-link>
+                <router-link :to="{name: 'Community'}" class="nav-link active">Community</router-link>
               </li>
               <li class="nav-item">
                 <router-link :to="`/mypage/${username}`" class="nav-link active">Mypage</router-link>

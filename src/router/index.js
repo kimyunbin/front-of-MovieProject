@@ -4,6 +4,7 @@ import Intro from '@/views/Intro.vue'
 import Movies from '@/views/Movies.vue'
 import Login from '@/views/Login.vue'
 import Mypage from '@/views/Mypage.vue'
+import Community from '@/views/Community.vue'
 
 Vue.use(VueRouter)
 
@@ -29,7 +30,12 @@ const routes = [
     path:'/mypage/:username',
     name:'Mypage',
     component: Mypage,
-  }
+  },
+  {
+    path: '/community',
+    name: 'Community',
+    component: Community
+  },
 
 ]
 
