@@ -89,7 +89,7 @@ export default {
 .swiper-container {
   background: #262626;
   width: 100%;
-  padding-top: 50px;
+  padding-top: 30px;
   padding-bottom: 50px;
 }
 .swiper-slide {
@@ -131,6 +131,7 @@ export default {
 }
 .contentBx:hover h2{
   top: 55%;
+  mix-blend-mode : exclusion;
 }
 
 
