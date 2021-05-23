@@ -6,6 +6,7 @@ import Login from '@/views/Login.vue'
 import Mypage from '@/views/Mypage.vue'
 import MovieDetail from '@/views/MovieDetail.vue'
 import Community from '@/views/Community.vue'
+import Tournament from '@/views/Tournament.vue'
 
 Vue.use(VueRouter)
 
@@ -42,7 +43,11 @@ const routes = [
     name: 'Community',
     component: Community
   },
-
+  {
+    path: '/tournament',
+    name: 'Tournament',
+    component: Tournament
+  },
 ]
 
 const router = new VueRouter({

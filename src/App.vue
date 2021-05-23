@@ -24,6 +24,9 @@
               <li class="nav-item">
                 <router-link :to="`/mypage/${username}`" class="nav-link active">Mypage</router-link>
               </li>
+              <li class="nav-item">
+                <router-link :to="`/tournament`" class="nav-link active">영화승부</router-link>
+              </li>
             </span>
             <!--  로그아웃 시 보이는 것 -->
             <span class="navbar-nav" v-else>

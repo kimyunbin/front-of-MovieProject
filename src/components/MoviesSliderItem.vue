@@ -12,7 +12,7 @@
     <div class="color">
       <h3>{{ movie.release_date }}</h3>
     </div>
-    <a href="#">Detail</a>
+    <router-link :to="{name : 'MovieDetail', params : {movie_pk : movie.id }}">Detail</router-link>
   </div>
 </template>
 

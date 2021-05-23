@@ -37,7 +37,7 @@ window.addEventListener("load", function(){
 
 </script>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
 
 .wrap,
