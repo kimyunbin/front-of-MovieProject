@@ -4,8 +4,11 @@ import Intro from '@/views/Intro.vue'
 import Movies from '@/views/Movies.vue'
 import Login from '@/views/Login.vue'
 import Mypage from '@/views/Mypage.vue'
+import MovieDetail from '@/views/MovieDetail.vue'
 import Community from '@/views/Community.vue'
 import ReviewDetail from '@/views/ReviewDetail.vue'
+import Tournament from '@/views/Tournament.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -18,6 +21,11 @@ const routes = [
     path: '/movies',
     name: 'Movies',
     component: Movies
+  },
+  {
+    path: '/movies/:movie_pk',
+    name: 'MovieDetail',
+    component: MovieDetail
   },
   {
     path: '/login',
@@ -37,11 +45,18 @@ const routes = [
     component: Community
   },
   {
+<<<<<<< HEAD
     path: '/community/:detail',
     name: 'ReviewDetail',
     component: ReviewDetail
   },
 
+=======
+    path: '/tournament',
+    name: 'Tournament',
+    component: Tournament
+  },
+>>>>>>> master
 ]
 
 const router = new VueRouter({
