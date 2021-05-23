@@ -2,7 +2,7 @@
   <div class="main">
     <MoviesSlider :movies="highscore_movies"/>
     <div class="section">
-      <div class="section-header">최근 영화</div>
+      <div class="section-header">곧 개봉할 영화</div>
       <MovieCarousel :movies="latest_movies"/>
     </div>
     <div class="section">

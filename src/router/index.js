@@ -4,6 +4,7 @@ import Intro from '@/views/Intro.vue'
 import Movies from '@/views/Movies.vue'
 import Login from '@/views/Login.vue'
 import Mypage from '@/views/Mypage.vue'
+import MovieDetail from '@/views/MovieDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,11 @@ const routes = [
     path: '/movies',
     name: 'Movies',
     component: Movies
+  },
+  {
+    path: '/movies/:movie_pk',
+    name: 'MovieDetail',
+    component: MovieDetail
   },
   {
     path: '/login',
