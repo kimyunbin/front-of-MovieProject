@@ -8,6 +8,7 @@ import MovieDetail from '@/views/MovieDetail.vue'
 import Community from '@/views/Community.vue'
 import ReviewDetail from '@/views/ReviewDetail.vue'
 import Tournament from '@/views/Tournament.vue'
+import Test from '@/views/test.vue'
 
 Vue.use(VueRouter)
 
@@ -45,18 +46,20 @@ const routes = [
     component: Community
   },
   {
-<<<<<<< HEAD
     path: '/community/:detail',
     name: 'ReviewDetail',
     component: ReviewDetail
   },
-
-=======
+  {
     path: '/tournament',
     name: 'Tournament',
     component: Tournament
   },
->>>>>>> master
+  {
+    path: '/test',
+    name: 'Test',
+    component: Test
+  },
 ]
 
 const router = new VueRouter({
