@@ -18,8 +18,8 @@ export default new Vuex.Store({
   },
   actions: {
     login: function({commit},res){
-      console.log('sdsdds');
-      console.log(res);
+      // console.log('sdsdds');
+      // console.log(res);
       commit('LOGIN',res)
     },
   },
