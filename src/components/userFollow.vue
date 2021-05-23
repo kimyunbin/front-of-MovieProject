@@ -45,7 +45,6 @@ export default {
           } else{
             content.setAttribute('class','content')
             heart.setAttribute('class','heart')
-
           }
           // console.log(res.data.count);
           this.$emit('count',res.data.count)

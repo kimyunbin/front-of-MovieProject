@@ -1,6 +1,5 @@
 <template>
 <div class="container">
-
   <div class="row">
     <ReviewListItem 
       v-for="(review, idx) in reviews"
@@ -51,7 +50,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .container{
   background: url("../assets/review/background.jpg");
 }

@@ -1,6 +1,6 @@
 <template>
   <body>
-    <div class="card">
+    <div class="card" @click="detail">
       <div class="card-image" v-bind:style="{backgroundImage:'url('+this.bgImg+')'}"></div>
       <div class="card-text">
         <span class="date">{{review.created_at}}</span>
@@ -13,11 +13,17 @@
           <div class="type">average</div>
         </div>
         <div class="stat border">
-          <div class="value">5123</div>
-          <div class="type">views</div>
+          <div v-if ="review.liked">
+            <div class="value"><i class="far fa-grin fa-lg"></i></div>
+            <div class="type">recommend</div>
+          </div>
+          <div v-else>
+            <div class="value"><i class="far fa-angry fa-lg"></i></div>
+            <div class="type">recommend</div>
+          </div>
         </div>
         <div class="stat">
-          <div class="value">32</div>
+          <div class="value">{{review.comment_count}}</div>
           <div class="type">comments</div>
         </div>
       </div>
@@ -34,14 +40,22 @@ export default {
       type: Object,
     }
   },
+  methods: {
+    detail: function () {
+      this.$router.push({name:'ReviewDetail',params: {detail: this.detailId}})
+    }
+  },
   data: function () {
     return {
-      bgImg : ''
+      bgImg : '',
+      detailId: '',
     }
   },
   created: function () {
     // console.log(this.review.movie.poster_path);
-    this.bgImg = `https://image.tmdb.org/t/p/w500/${this.review.movie.poster_path}`
+    this.bgImg = `https://image.tmdb.org/t/p/w500/${this.review.movie.poster_path}`,
+    this.detailId = this.review.id
+
   }
 }
 </script>

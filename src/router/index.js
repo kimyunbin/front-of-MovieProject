@@ -5,7 +5,7 @@ import Movies from '@/views/Movies.vue'
 import Login from '@/views/Login.vue'
 import Mypage from '@/views/Mypage.vue'
 import Community from '@/views/Community.vue'
-
+import ReviewDetail from '@/views/ReviewDetail.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -35,6 +35,11 @@ const routes = [
     path: '/community',
     name: 'Community',
     component: Community
+  },
+  {
+    path: '/community/:detail',
+    name: 'ReviewDetail',
+    component: ReviewDetail
   },
 
 ]
