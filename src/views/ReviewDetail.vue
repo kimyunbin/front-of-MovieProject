@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
-    <header class="header">
-      <h1>영화정보</h1>
-    </header>
+    <div class="header">
+      <MovieDetailMain :movie="detail.movie"/>
+    </div>
     <article class="main">
-      <!-- <ReviewContent /> -->
+      <ReviewContent />
     </article>
     <aside class="aside aside1">
       <userInformation />
@@ -19,15 +19,37 @@
 </template>
 
 <script>
+import axios from 'axios'
 
-// import ReviewContent from '@/components/ReviewContent'
+const BACKEND = process.env.VUE_APP_BACKEND_LINK
+import ReviewContent from '@/components/ReviewContent'
+import MovieDetailMain from '@/components/MovieDetailMain.vue'
 import userInformation from '@/components/userInformation'
 export default {
   name:'ReviewDetail',
-  components : {
-    // ReviewContent,
-    userInformation,
+  data : function(){
+    return {
+      detail : "",
+    }
   },
+  components : {
+    ReviewContent,
+    userInformation,
+    MovieDetailMain,
+  },
+  created: function () {
+    axios({
+        method: 'get',
+        url: `${BACKEND}community/${this.$route.params.detail}`,
+      })
+        .then(res => {
+          console.log(res)
+          this.detail = res.data[0]
+        })
+        .catch(err => {
+          console.log(err)
+        })
+  }
   
 }
 </script>
@@ -45,10 +67,6 @@ export default {
   flex: 1 100%;
   border-radius: 10px;
 }
-.header{
-  background: tomato;
-  height: 120px;
-}
 
 .footer{
   background:lightgreen;
@@ -57,7 +75,7 @@ export default {
 
 .main {
   text-align: left;
-  background: orangered;
+  /* background: orangered; */
   height: 300px;
   font-size: 24px;
 }

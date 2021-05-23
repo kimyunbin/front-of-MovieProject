@@ -45,18 +45,15 @@ const routes = [
     component: Community
   },
   {
-<<<<<<< HEAD
     path: '/community/:detail',
     name: 'ReviewDetail',
     component: ReviewDetail
   },
-
-=======
+  {
     path: '/tournament',
     name: 'Tournament',
     component: Tournament
   },
->>>>>>> master
 ]
 
 const router = new VueRouter({

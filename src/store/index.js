@@ -18,6 +18,9 @@ export default new Vuex.Store({
       const token = res.data.token
       state.token = token
     },
+    LOGOUT : function(state) {
+      state.token =''
+    }
 
   },
   actions: {
@@ -26,6 +29,9 @@ export default new Vuex.Store({
       // console.log(res);
       commit('LOGIN',res)
     },
+    logout: function({commit}, res){
+      commit('LOGOUT',res)
+    }
 
   },
   modules: {
