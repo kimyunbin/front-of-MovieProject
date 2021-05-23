@@ -16,7 +16,7 @@
                 <router-link :to="{name: 'Movies'}" class="nav-link active" >Home</router-link>
               </li>
               <li class="nav-item">
-                <a class="btn nav-link active" @click="logout">Logout</a>
+                <a class="btn nav-link active p-1" @click="logout">Logout</a>
               </li>
               <li class="nav-item">
                 <router-link :to="{name: 'Community'}" class="nav-link active">Community</router-link>
@@ -83,12 +83,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
 }
 
