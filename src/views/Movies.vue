@@ -1,22 +1,29 @@
 <template>
-  <div>
-
+  <div class="main">
     <MoviesSlider :movies="highscore_movies"/>
+    <div class="section">
+      <div class="section-header">최근 영화</div>
+      <MovieCarousel :movies="latest_movies"/>
+    </div>
+    <div class="section">
+      <div class="section-header">많은 사람이 본 영화</div>
+      <MovieCarousel :movies="like_movies"/>
+    </div>
+
   </div>
 </template>
 
 <script>
 import MoviesSlider from '@/components/MoviesSlider.vue'
-
+import MovieCarousel from '@/components/MovieCarousel.vue'
 import axios from 'axios'
 
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 export default {
-  
   name : 'Movies',
   components : {
     MoviesSlider,
-
+    MovieCarousel,
   },
   data : function(){
     return {
@@ -44,4 +51,22 @@ export default {
 
 <style>
 
+.main {
+  background : #262626;
+}
+
+.section {
+  margin : 20px;
+}
+.section-header {
+  color : #ffffff;
+  margin-bottom: 30px;
+  padding-left: 20px;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 700;
+  border-left: 4px solid #c0392b;
+  display: flex;
+  align-items: center;
+}
 </style>
