@@ -8,6 +8,7 @@ import MovieDetail from '@/views/MovieDetail.vue'
 import Community from '@/views/Community.vue'
 import ReviewDetail from '@/views/ReviewDetail.vue'
 import Tournament from '@/views/Tournament.vue'
+import Test from '@/views/test.vue'
 
 Vue.use(VueRouter)
 
@@ -53,6 +54,11 @@ const routes = [
     path: '/tournament',
     name: 'Tournament',
     component: Tournament
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: Test
   },
 ]
 
