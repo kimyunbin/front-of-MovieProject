@@ -1,5 +1,5 @@
 <template>
-	<div class="background">
+	<div class="background ">
 		<testComponent/>
 	</div>
 </template>
@@ -19,7 +19,8 @@ export default {
 .background {
 	background : #262626;
 	font-family:sans-serif;
-	font-size:12px
+	font-size:12px;
+	margin: 0 auto;
 }
 
 

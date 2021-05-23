@@ -5,7 +5,7 @@
 	<div id="content" class="ink_content" role="main">
 	<section class="ink_board guest_mode">
 
-  <article class="ink_atc round20 has_list">
+  <article class="ink_atc round20 has_list ">
 		<!-- 글제목 부분 -->
 		<header class="atc_header">
 			<h1>
@@ -131,15 +131,8 @@ export default {
 }
 </script>
 
-<style>
-	article,header,section
-{
-	display:block
-}
-	body
-{
-	position:relative
-}
+<style scoped>
+
 	a img
 {
 	border:0
@@ -156,7 +149,6 @@ export default {
 	word-break:normal;
 	word-wrap:break-word
 }
-
 	a
 {
 	text-decoration:none;
@@ -242,7 +234,7 @@ export default {
 }
 .inkpf.color
 {
-	background-color:#edf6f2;
+	background-color:#edf6f2
 }
 .inkpf_img
 {
@@ -280,18 +272,9 @@ export default {
 {
 	position:relative;
 	min-height:100%;
-	box-sizing:border-box
-}
-.clearfix:after,.clearfix:before
-{
-	content:" ";
-	display:table
-}
-.clearfix:after
-{
-	clear:both
-}
+	box-sizing:border-box;
 
+}
 	body
 {
 	font-size:14px;
@@ -384,23 +367,13 @@ export default {
 	padding:6px 6px 4px;
 	overflow:visible
 }
-.ink_bubble::after
-{
-	content:'';
-	position:absolute;
-	left:50%;
-	top:100%;
-	margin-left:-4px;
-	border:5px solid transparent;
-	border-top:5px solid #222
-}
+
 .ink_wrap
 {
 	padding-bottom:200px
 }
 .ink_container
 {
-	width:1200px;
 	margin:0 auto;
 	border-top:1px solid transparent
 }
@@ -410,13 +383,12 @@ export default {
 }
 .ink_wrapper
 {
-	position:relative;
+
 	padding-bottom:25px
 }
 .ink_content
 {
-	float:left;
-	width:900px
+	width:100%;
 }
 .ink_bt_top
 {
@@ -432,7 +404,7 @@ export default {
 }
 .ink_board
 {
-	position:relative
+	position:relative;
 }
 .atc_vote button
 {
@@ -491,8 +463,7 @@ export default {
 }
 .cmt_member_only
 {
-	padding:50px 0;
-	text-align:center
+	padding:50px 0
 }
 .cmt_member_only p
 {
@@ -673,8 +644,6 @@ export default {
 	cursor:pointer;
 	opacity:0
 }
-
-
 .bt_atc_font
 {
 	background-color:#e5e5e5
@@ -771,7 +740,6 @@ export default {
 	background-size:13px 13px;
 	text-indent:-9999px
 }
-
 .list_wrap .list_unit
 {
 	transition-property:background-color;
@@ -822,7 +790,7 @@ export default {
 }
 .atc_ctrl
 {
-	float:right;
+
 	margin-left:15px
 }
 .atc_ctrl a
@@ -865,7 +833,7 @@ export default {
 }
 .atc_vote
 {
-	float:left;
+
 	margin-top:25px
 }
 .atc_vote button
@@ -1013,7 +981,6 @@ export default {
 {
 	opacity:1!important
 }
-
 	a,body
 {
 	color:#222
@@ -1147,7 +1114,6 @@ export default {
 {
 	background-color:#f7f7f7
 }
-
 .pt_col
 {
 	color:#ec5e5e!important
@@ -1180,4 +1146,6 @@ export default {
 {
 	color:#41bc99
 }
+
+
 </style>
