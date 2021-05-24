@@ -87,6 +87,7 @@ export default {
         .then(res => {
           console.log(res)
           this.$store.dispatch('login',res)
+          // nextPage가 있다면 보내주기
           if (this.nextPage){
             this.$router.push({ name: this.nextPage })
             this.setNextPage('')

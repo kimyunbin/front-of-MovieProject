@@ -5,12 +5,13 @@
     <div class="versus" ref="versus"></div>
     <div class="title">
       영화 무작위 16강 대전(총 1368개)<br>
-      16강&nbsp;&nbsp;&nbsp;
+      
       <span v-if="max_count>2">
+        16강&nbsp;&nbsp;&nbsp;
         {{ count }} / {{ max_count }}
       </span>
       <span v-else-if="max_count>1">
-        준결승전
+        준결승전 {{ count }} / {{ max_count }}
       </span>
       <span v-else>
         결승전
@@ -51,7 +52,11 @@ export default {
       'setNextPage'
     ]),
     getMovies : function(){
-      axios.get(BACKEND+'movies/tournament')
+      axios({
+        method : 'get',
+        url: `${BACKEND}movies/tournament`,
+        headers: this.setToken(this.token),
+      })
       .then( res => {
         this.movies = res.data
         console.log(res.data)
@@ -89,15 +94,30 @@ export default {
           this.second_movie = this.movies.shift()
           }else {
             const movie = this.movies.shift()
-            this.$router.push({name : 'MovieDetail', params : {movie_pk : movie.id }})
+            this.postWinMovie(movie)
+
+
+
           }
           this.checkDouble = true
         }, 700);
         
       }
-      
-      
     },
+    postWinMovie : function(movie){
+      axios({
+        method: 'post',
+        url: `${BACKEND}movies/tournament`,
+        headers: this.setToken(this.token),
+        data : {
+          movie_id : movie.id
+        }
+      })
+      .then(() =>{
+        this.$router.push({name : 'MovieDetail', params : {movie_pk : movie.id }})
+      })
+    }
+    ,
     selectAnimation : function(ele){
       const xMax = 16
       anime({
