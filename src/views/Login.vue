@@ -9,7 +9,9 @@
             <input type="text" placeholder="Username" id="loginUsername" v-model="credentials.username">
             <input type="password" placeholder="Password" id="loginPassword" v-model="credentials.password">
             <input type="submit" placeholder="login">
-            <p class="signup">don't have an account? <a href="#" @click="toggleForm">Sign up.</a></p>
+            <p class="signup">don't have an account? 
+              <a href="javascript:void(0);" @click="toggleForm">Sign up.</a>
+            </p>
           </form>
         </div>
       </div>
@@ -23,7 +25,9 @@
             <input type="password" placeholder="create Password" id="createPassword" v-model="credentials.password">
             <input type="password" placeholder="Confirm Password" id="createPasswordConfirmation" v-model="credentials.passwordConfirmation">
             <input type="submit" placeholder="Sign Up" @click="signup(credentials)" @keyup.enter="signup(credentials)">
-            <p class="signup">Already have an account? <a href="#" @click="toggleForm">Sign in.</a></p>
+            <p class="signup">Already have an account? 
+              <a href="javascript:void(0);" @click="toggleForm">Sign in.</a>
+            </p>
           </form>
         </div>
         <div class="imgBx"><img src="../assets/login/signup.jpg" alt="signupimg"></div>
@@ -36,6 +40,10 @@
 <script>
 import axios from 'axios'
 import _ from 'lodash'
+import { mapState } from 'vuex'
+import { mapActions } from 'vuex'
+
+
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 export default {
   name : 'Login',
@@ -55,7 +63,15 @@ export default {
       type:Boolean
     }
   },
+  computed : {
+    ...mapState([
+      'nextPage'
+    ])
+  },
   methods: {
+    ...mapActions([
+      'setNextPage'
+    ]),
     login: function (event) {
       event.preventDefault()
       const loginItem = {
@@ -71,7 +87,14 @@ export default {
         .then(res => {
           console.log(res)
           this.$store.dispatch('login',res)
-          this.$router.push({ name: 'Movies'})
+          // nextPage가 있다면 보내주기
+          if (this.nextPage){
+            this.$router.push({ name: this.nextPage })
+            this.setNextPage('')
+          }else{
+            this.$router.push({ name: 'Movies'})
+          }
+          
           // commit('LOGIN',res)
           // localStorage.setItem('jwt', res.data.token)
           // this.$emit('login')
@@ -105,6 +128,7 @@ export default {
         })
     },
     toggleForm : function (){
+      
       const container = document.querySelector('.container');
       const section = document.querySelector('section');
       container.classList.toggle('active');

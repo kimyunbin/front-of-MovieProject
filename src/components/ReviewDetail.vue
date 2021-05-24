@@ -167,8 +167,39 @@
 					</article> -->
 
 			</div>
-
 			</div>
+
+			<!-- 댓글 작성부분 -->
+			<div class="cmt_write cmt_write_unit">
+				<span class="inkpf round"></span>
+				<form action="/" method="post" class="cmt_form" onsubmit="" editor_sequence="65603779">
+					<input type="hidden" name="error_return_url" value="/movietalk/65603779?category=376">
+					<input type="hidden" name="act" value="dispBoardContent">
+					<input type="hidden" name="mid" value="movietalk">
+					<input type="hidden" name="document_srl" value="65603779">
+					<input type="hidden" name="comment_srl" value="">
+					<input type="hidden" name="content" value="">
+					<div class="cmt_write_input text_ver">
+						<input type="hidden" name="use_html" value="Y">
+						<input type="hidden" id="htm_65603779" value="n">
+						<textarea class="cmt_textarea" id="editor_65603779" cols="50" rows="4" placeholder="댓글 내용을 입력해주세요." style="width: 100%;"></textarea>
+					</div>
+					<div class="cmt_write_option">
+						<button class="bt_write_type unit" type="button" onclick="">
+							<i class="fas fa-chevron-circle-right"></i> 에디터 모드
+						</button>
+						<span class="write_option"></span>
+						<div class="bt_area bt_right">
+							<button class="ib ib2 ib_mono bt_vote_submit" onclick="" type="submit">
+								<i class="fas fa-heart pt_col"></i> + 등록
+							</button>											
+							<button class="ib ib2 ib_color" type="submit">댓글 등록</button>
+						</div>
+					</div>
+					<input type="hidden" name="_rx_csrf_token" value="tdpiVCuo6nXWnaGi"></form>
+			</div>
+
+			<!-- 댓글부분 끝 -->
 		</div>
 
 	</article>

@@ -11,7 +11,7 @@ export default new Vuex.Store({
   ],
   state: {
     token: '',
-
+    nextPage : '',
   },
   mutations: {
     LOGIN : function(state, res) {
@@ -20,6 +20,9 @@ export default new Vuex.Store({
     },
     LOGOUT : function(state) {
       state.token =''
+    },
+    SETNEXTPAGE : function(state, res){
+      state.nextPage=res
     }
 
   },
@@ -31,6 +34,9 @@ export default new Vuex.Store({
     },
     logout: function({commit}, res){
       commit('LOGOUT',res)
+    },
+    setNextPage : function({commit}, res){
+      commit('SETNEXTPAGE', res)
     }
 
   },
