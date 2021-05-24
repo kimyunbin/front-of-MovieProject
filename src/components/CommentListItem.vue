@@ -4,6 +4,7 @@
       <span class="inkpf round"></span>					
       <span class="cmt_rank cmt_rank1">1등</span>			
     </div> -->
+    <span>{{ someDate | moment("2021-05-22T18:05:58+09:00", "now") }}</span>
     <div class="cmt_header">
       <a href="#popup_menu_area" class="nickname member_62105361" onclick="return false">
         {{comment.user.username}}
@@ -41,6 +42,7 @@
 
 <script>
 import axios from 'axios'
+
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 export default {
   name:'CommentListItem',
@@ -48,6 +50,9 @@ export default {
     return {
       Commentliked: '',
     }
+  },
+  components : {
+    // VueStar
   },
   props: {
     comment: {

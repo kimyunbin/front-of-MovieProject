@@ -16,7 +16,7 @@
 				<span class="inkpf color round small"><img class="inkpf_img" src="//img.extmovie.com/files/member_extra_info/profile_image/247/982/042/42982247.jpg?20190130002956" alt=""></span>
 					<a href="#popup_menu_area" class="member_42982247" onclick="return false">{{detail.user.username}}</a>
         </span>
-				<span class="text_en atc_date font_grey1"><time datetime="2021-05-22T18:05:58+09:00">{{detail.created_at}}</time></span>
+				<span class="text_en atc_date font_grey1"><time datetime="2021-05-22T18:05:58+09:00">{{someDate | moment("detail.created_at","now")}}</time></span>
 				<div class="atc_info_right text_en font_grey1">				
 					<span class="count_vote pt_col"><i class="fas fa-heart" title="추천 수"></i> {{like_users+funny_users+helpful_users}}</span>		 		
 					<span class="count_cmt pt_col2"><i class="fas fa-comment-dots" tilte="댓글"></i> {{detail.comment_count}}</span>
@@ -59,10 +59,14 @@
 					</span>											
 				</div> -->
 				<span class="atc_vote">
-						<button class="bt_vote vote_area" type="button" @click="likeusers">좋아요<span class="voted_count text_en">{{like_users}}</span></button>
+						<button class="bt_vote vote_area" type="button" @click="likeusers">
+              좋아요
+              <span class="voted_count text_en">{{like_users}}</span>
+            </button>
 				</span>
 				<span class="atc_vote">
-						<button class="bt_vote vote_area" type="button" @click="funnyusers">재밌어요<span class="voted_count text_en">{{funny_users}}</span></button>
+						<button class="bt_vote vote_area" type="button" @click="funnyusers">재밌어요
+              <span class="voted_count text_en">{{funny_users}}</span></button>
 				</span>
 				<span class="atc_vote">
 						<button class="bt_vote vote_area" type="button" @click="helpfulusers">도움되요<span class="voted_count text_en">{{helpful_users}}</span></button>
@@ -178,6 +182,12 @@
 
 <script>
 import axios from 'axios'
+import Vue from 'vue'
+import vueMoment from 'vue-moment' 
+Vue.use(vueMoment)
+
+
+// import VueStar from 'vue-star'
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 import movieMixin from "@/mixins/movieMixin"
 import CommentListItem from '@/components/CommentListItem'
@@ -185,6 +195,7 @@ export default {
   name : "ReviewDetail",
   components : {
     CommentListItem,
+    // VueStar,
   },
   mixins : [movieMixin],
   data: function () {
@@ -284,7 +295,10 @@ export default {
 </script>
 
 <style >
+/* * {
+  background: #262626;
 
+} */
 	a img
 {
 	border:0
@@ -386,7 +400,7 @@ export default {
 }
 .inkpf.color
 {
-	background-color:#edf6f2
+	background-color:#efefef
 }
 .inkpf_img
 {
@@ -914,11 +928,13 @@ export default {
 {
 	padding:20px 25px;
 	font-size:16px;
-	line-height:160%
+	line-height:160%;
+  /* background: #262626; */
+
 }
 .containerN .atc_header h1
 {
-	padding:20px 25px
+	padding:20px 25px;
 }
 .atc_info
 {

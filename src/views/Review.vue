@@ -1,6 +1,6 @@
 <template>
-<div>
-  review
+<div class="background">
+  <span class= "ReviewText">Review</span>
   <ReviewDetail />
 </div>
 </template>
@@ -16,6 +16,15 @@ export default {
 }
 </script>
 
-<style>
+<style >
+/* .background {
+
+  background: #262626;
+} */
+.ReviewText{
+  font-size: 24px;
+  font-weight: 300;
+} 
+
 
 </style>

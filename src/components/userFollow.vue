@@ -79,7 +79,7 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,80%);
+  transform: translate(-50%,200%);
 }
 .content{
   padding: 13px 16px;

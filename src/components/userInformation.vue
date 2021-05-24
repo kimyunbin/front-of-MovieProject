@@ -15,10 +15,10 @@
     </div>
     <div class="card-footer">
       <div class="col vr">
-        <p><span class="count">{{userInformations.followers}}</span>Followers</p>
+        <p><span class="count">{{followerCount}}</span>Followers</p>
       </div>
       <div class="col">
-        <p><span class="count" id="following">{{userInformations.followings}}</span>Following</p>
+        <p><span class="count" id="following">{{userInformations.followers}}</span>Following</p>
       </div>
     </div>
   </div>
@@ -35,7 +35,7 @@ export default {
     return {
       userInformations: '',
       imgUrl: null,
-      followerCount: 0,
+      followerCount: '',
     }
   },
   methods:{
@@ -61,8 +61,9 @@ export default {
           headers: this.setToken()
         })
         .then(res => {
-          // console.log(res)
+          console.log(res)
           this.userInformations = res.data
+          this.followerCount = res.data.followings
           this.imgUrl =`https://s.gravatar.com/avatar/${res.data.email_hash}?d=identicon`
         })
         .catch(err => {

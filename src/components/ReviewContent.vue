@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="container">
+      
     <div class="card" v-bind:class="{active:isActive}">
       <div class="icon">
         <div v-if ="detail.liked">
