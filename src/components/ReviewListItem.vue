@@ -1,5 +1,5 @@
 <template>
-  <body>
+  <div>
     <div class="card" @click="detail">
       <div class="card-image" v-bind:style="{backgroundImage:'url('+this.bgImg+')'}"></div>
       <div class="card-text">
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-  </body>
+  </div>
 </template>
 
 <script>
@@ -61,17 +61,10 @@ export default {
 </script>
 
 <style scoped>
-body{
-  /* width: 33vw; */
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* background-color: #262626; */
-  
-  overflow: hidden;
-}
+
 .card {
+  margin-top: 20px;
+  margin-bottom : 20px;
   display: grid;
   grid-template-columns: 300px;
   grid-template-rows: 210px 210px 80px;
@@ -145,7 +138,7 @@ body{
   font-size: 12px;
 }
 .card:hover {
-  transform: scale(1.2);
+  transform: scale(1.05);
   box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
 }
 
