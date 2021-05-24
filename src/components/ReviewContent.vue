@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import axios from 'axios'
 import VueStar from 'vue-star'
+import axios from 'axios'
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 export default {
   name:'ReviewContent',

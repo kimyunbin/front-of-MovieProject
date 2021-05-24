@@ -16,7 +16,7 @@
                 <router-link :to="{name: 'Movies'}" class="nav-link active" >Home</router-link>
               </li>
               <li class="nav-item">
-                <a class="btn nav-link active p-1" @click="logout">Logout</a>
+                <router-link to="#" class="nav-link active" @click.native="logout">Logout</router-link>
               </li>
               <li class="nav-item">
                 <router-link :to="{name: 'Community'}" class="nav-link active">Community</router-link>
@@ -103,6 +103,10 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.navbar-nav .nav-item{
+  text-align:center;
 }
 </style>
 
