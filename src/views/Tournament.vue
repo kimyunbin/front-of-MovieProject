@@ -29,6 +29,7 @@ import axios from 'axios'
 import _ from 'lodash'
 import movieMixin from "@/mixins/movieMixin"
 import anime from 'animejs/lib/anime.es.js';
+import { mapState } from 'vuex'
 
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 
@@ -119,12 +120,20 @@ export default {
     }
   },
   mixins : [movieMixin],
+  computed : {
+    ...mapState([
+      'token'
+    ])
+  },
   filters : {
     backgroundStyle : function(url){
       return `background-image: url('${url}');`
     }
   },
   created : function(){
+    if (!this.token){
+      this.$router.push('{name : Login}')
+    } 
     this.getMovies()
   }
 }
