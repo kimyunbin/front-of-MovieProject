@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     detail: function () {
-      this.$router.push({name:'ReviewDetail',params: {detail: this.detailId}})
+      this.$router.push({name:'Review',params: {detail: this.detailId}})
     }
   },
   data: function () {

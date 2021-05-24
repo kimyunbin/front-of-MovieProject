@@ -6,7 +6,7 @@ import Login from '@/views/Login.vue'
 import Mypage from '@/views/Mypage.vue'
 import MovieDetail from '@/views/MovieDetail.vue'
 import Community from '@/views/Community.vue'
-import ReviewDetail from '@/views/ReviewDetail.vue'
+import Review from '@/views/Review.vue'
 import Tournament from '@/views/Tournament.vue'
 import Test from '@/views/test.vue'
 
@@ -47,8 +47,8 @@ const routes = [
   },
   {
     path: '/community/:detail',
-    name: 'ReviewDetail',
-    component: ReviewDetail
+    name: 'Review',
+    component: Review
   },
   {
     path: '/tournament',

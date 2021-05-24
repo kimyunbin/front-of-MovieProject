@@ -76,7 +76,7 @@
 				<!-- 댓글리스트 -->
 				<div class="cmt_list">
 					<!-- 댓글 단일요소 -->
-					<article class="cmt_unit" id="comment_65603837">
+					<!-- <article class="cmt_unit" id="comment_65603837">
 						<div class="inkpf_wrap">
 							<span class="inkpf round"></span>					
 							<span class="cmt_rank cmt_rank1">1등</span>			
@@ -101,9 +101,9 @@
 						<div class="cmt_body">
 							<div class="comment_65603837_62105361 rhymix_content xe_content" data-pswp-uid="2">와… 저 포스터 정말 가지고 싶네요! ^^;;</div>								
 							<div class="cmt_buttons"><div class="cmt_vote">
-								<a class="bt bt2" href="javascript:void(0)" onclick="insertWarn('권한이 없습니다.')">댓글</a>
+								<a class="bt bt2" href="javascript:void(0)">댓글</a>
 								<div class="bt_wrap">
-									<button class="text_en bt bt_vote" type="button" onclick="insertWarn('권한이 없습니다.')" title="추천">
+									<button class="text_en bt bt_vote" type="button" @click="likeComment" title="추천">
 										<i class="fas fa-heart"></i> 
 										<span class="voted_count">0</span>
 									</button>																							
@@ -113,10 +113,15 @@
 									<span class="cmt_time">18:12</span>
 									<div class="cmt_date">1일 전 </div>
 								</div>
-						</div><!-- //cmt_body -->
-					</article>
+						</div>
+					</article> -->
 
-					<!-- 댓글 2 -->
+          <CommentListItem 
+            v-for="(comment, idx) in comments"
+            :key ="idx"
+            :comment="comment"
+            />
+					<!-- 댓글 2
 					<article class="cmt_unit" id="comment_65603837">
 						<div class="inkpf_wrap">
 							<span class="inkpf round"></span>					
@@ -154,8 +159,8 @@
 									<span class="cmt_time">18:12</span>
 									<div class="cmt_date">1일 전 </div>
 								</div>
-						</div><!-- //cmt_body -->
-					</article>
+						</div> 
+					</article> -->
 
 			</div>
 
@@ -173,13 +178,13 @@
 
 <script>
 import axios from 'axios'
-import movieMixin from "@/mixins/movieMixin"
-// import CommentListItem from '@/components/CommentListItem'
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
+import movieMixin from "@/mixins/movieMixin"
+import CommentListItem from '@/components/CommentListItem'
 export default {
   name : "ReviewDetail",
   components : {
-    // CommentListItem,
+    CommentListItem,
   },
   mixins : [movieMixin],
   data: function () {
@@ -188,6 +193,7 @@ export default {
       like_users: '',
       funny_users:'',
       helpful_users: '',
+      comments: [],
     }
   },
   methods:{
@@ -254,6 +260,7 @@ export default {
           console.log(err)
         })
     },
+   
   },
   created: function () {
     axios({
@@ -261,12 +268,13 @@ export default {
         url: `${BACKEND}community/${this.$route.params.detail}`,
       })
       .then(res => {
-        console.log(res)
+        // console.log(res)
         this.detail = res.data[0]
+        this.comments = res.data[0].comment_set
         this.like_users = res.data[0].like_users.length
         this.funny_users = res.data[0].funny_users.length
         this.helpful_users = res.data[0].helpful_users.length
-        console.log(this.detail)
+        console.log(this.detail.comment_set)
       })
       .catch(err => {
         console.log(err)
@@ -275,7 +283,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style >
 
 	a img
 {
