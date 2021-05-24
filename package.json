@@ -18,6 +18,7 @@
     "swiper": "^5.3.7",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",
+    "vue-gravatar": "^1.4.1",
     "vue-router": "^3.2.0",
     "vue-star": "0.0.4",
     "vue-star-rating": "^1.7.0",

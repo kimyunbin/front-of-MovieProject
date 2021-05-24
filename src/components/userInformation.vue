@@ -1,7 +1,8 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <img :src="imgUrl" alt="profile Image" class="profile-img">
+      <Gravatar :email="userInformations.email" class="profile-img"/>
+      <!-- <img :src="imgUrl" alt="profile Image" class="profile-img"> -->
     </div>
     <div class="card-body">
       
@@ -28,6 +29,8 @@
 
 import axios from 'axios'
 import userFollow from '@/components/userFollow'
+import Gravatar from 'vue-gravatar'
+
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 export default {
   name:'userInformation',
@@ -75,7 +78,8 @@ export default {
     }
   },
   components:{
-    userFollow
+    userFollow,
+    Gravatar,
   }
 
 }
