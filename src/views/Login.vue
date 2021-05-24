@@ -40,6 +40,10 @@
 <script>
 import axios from 'axios'
 import _ from 'lodash'
+import { mapState } from 'vuex'
+import { mapActions } from 'vuex'
+
+
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 export default {
   name : 'Login',
@@ -59,7 +63,15 @@ export default {
       type:Boolean
     }
   },
+  computed : {
+    ...mapState([
+      'nextPage'
+    ])
+  },
   methods: {
+    ...mapActions([
+      'setNextPage'
+    ]),
     login: function (event) {
       event.preventDefault()
       const loginItem = {
@@ -75,7 +87,13 @@ export default {
         .then(res => {
           console.log(res)
           this.$store.dispatch('login',res)
-          this.$router.push({ name: 'Movies'})
+          if (this.nextPage){
+            this.$router.push({ name: this.nextPage })
+            this.setNextPage('')
+          }else{
+            this.$router.push({ name: 'Movies'})
+          }
+          
           // commit('LOGIN',res)
           // localStorage.setItem('jwt', res.data.token)
           // this.$emit('login')

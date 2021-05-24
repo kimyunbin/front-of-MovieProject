@@ -30,6 +30,7 @@ import _ from 'lodash'
 import movieMixin from "@/mixins/movieMixin"
 import anime from 'animejs/lib/anime.es.js';
 import { mapState } from 'vuex'
+import { mapActions } from 'vuex'
 
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 
@@ -46,6 +47,9 @@ export default {
     }
   },
   methods : {
+    ...mapActions([
+      'setNextPage'
+    ]),
     getMovies : function(){
       axios.get(BACKEND+'movies/tournament')
       .then( res => {
@@ -132,7 +136,8 @@ export default {
   },
   created : function(){
     if (!this.token){
-      this.$router.push('{name : Login}')
+      this.setNextPage('Tournament')
+      this.$router.push({name : 'Login'})
     } 
     this.getMovies()
   }
