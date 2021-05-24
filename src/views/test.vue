@@ -11,7 +11,8 @@ export default {
 	name : "test",
 	components : {
 		testComponent,
-	}
+	},
+	
 }
 </script>
 
