@@ -51,7 +51,4 @@ export default {
 </script>
 
 <style scoped>
-.container{
-  background: url("../assets/review/background.jpg");
-}
 </style>

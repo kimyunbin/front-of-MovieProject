@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import axios from 'axios'
 import VueStar from 'vue-star'
+import axios from 'axios'
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 export default {
   name:'ReviewContent',
@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style scoped>
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -173,5 +173,5 @@ body {
 }
 .container .card.active .more::before{
   content:'Read Less';
-}
+} */
 </style>

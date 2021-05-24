@@ -106,7 +106,9 @@
 									<div class="cmt_date">1일 전 </div>
 								</div>
 						</div><!-- //cmt_body -->
+				
 					</article>
+					
 	
 			</div>
 
