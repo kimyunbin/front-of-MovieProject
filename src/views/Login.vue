@@ -9,7 +9,9 @@
             <input type="text" placeholder="Username" id="loginUsername" v-model="credentials.username">
             <input type="password" placeholder="Password" id="loginPassword" v-model="credentials.password">
             <input type="submit" placeholder="login">
-            <p class="signup">don't have an account? <a href="#" @click="toggleForm">Sign up.</a></p>
+            <p class="signup">don't have an account? 
+              <a href="javascript:void(0);" @click="toggleForm">Sign up.</a>
+            </p>
           </form>
         </div>
       </div>
@@ -23,7 +25,9 @@
             <input type="password" placeholder="create Password" id="createPassword" v-model="credentials.password">
             <input type="password" placeholder="Confirm Password" id="createPasswordConfirmation" v-model="credentials.passwordConfirmation">
             <input type="submit" placeholder="Sign Up" @click="signup(credentials)" @keyup.enter="signup(credentials)">
-            <p class="signup">Already have an account? <a href="#" @click="toggleForm">Sign in.</a></p>
+            <p class="signup">Already have an account? 
+              <a href="javascript:void(0);" @click="toggleForm">Sign in.</a>
+            </p>
           </form>
         </div>
         <div class="imgBx"><img src="../assets/login/signup.jpg" alt="signupimg"></div>
@@ -105,6 +109,7 @@ export default {
         })
     },
     toggleForm : function (){
+      
       const container = document.querySelector('.container');
       const section = document.querySelector('section');
       container.classList.toggle('active');
