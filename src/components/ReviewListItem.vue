@@ -12,7 +12,7 @@
           <div class="value">{{review.movie.vote_average}}</div>
           <div class="type">average</div>
         </div>
-        <div class="stat border">
+        <div class="stat borders">
             <div class="value">{{review.funny_users.length+review.like_users.length+review.helpful_users.length}}</div>
             <div class="type">recommend</div>
         </div>
@@ -126,7 +126,7 @@ export default {
   font-size: 22px;
   font-weight: 500;
 }
-.card-stats .border {
+.card-stats .borders {
   border-left: 1px solid rgb(172,26,87);
   border-right: 1px solid rgb(172,26,87);
 }

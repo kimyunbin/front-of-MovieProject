@@ -25,7 +25,7 @@ export default {
     // 무한스크롤 정의
     handleNotificationListScroll : function() {
       console.log("작동체크")
-      const { scrollHeight, scrollTop, clientHeight } = this.$refs.scrollTarget//e.target;//
+      const { scrollHeight, scrollTop, clientHeight } = document.querySelector("body")//e.target;//
       const isAtTheBottom = scrollHeight === scrollTop + clientHeight;
       console.log(scrollHeight, scrollTop, clientHeight,isAtTheBottom)
       // 일정 한도 밑으로 내려오면 함수 실행
