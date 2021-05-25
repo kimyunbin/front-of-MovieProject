@@ -263,6 +263,14 @@ export default {
 	position: absolute;
 	transform: translate(-48%,-30%)
 }
+.VueStar__ground{
+	width: auto;
+
+}
+.VueStar__decoration{
+	width: auto;
+	height:auto;
+}
 /* * {
   background: #262626;
 
