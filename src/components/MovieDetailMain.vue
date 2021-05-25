@@ -42,20 +42,83 @@
             </div>
           </div>
         </div>
-        <a href="#" class="theme-btn"><i class="icofont icofont-ticket"></i> 평가하기 </a>
+        <a href="javascript:void(0)" class="theme-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="icofont icofont-ticket"></i> 평가하기 </a>
       </div>
     </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title" id="exampleModalLabel">리뷰 글 작성</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <dd-form
+        :data="exampleDataSet"
+        :descriptions="exampleDescriptions"
+        @submit="submit"
+        >
+      </dd-form>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+    <!-- <ReviewWrite class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true"/> -->
+
   </section><!-- transformers area end -->
 </template>
 
 <script>
 import movieMixin from "@/mixins/movieMixin"
 import StarRating from 'vue-star-rating'
+import ddForm from 'vue-dd-form';
+// import ReviewWrite from "@/components/ReviewWrite.vue"
 
 export default {
   name : 'MovieDetailMain',
   components : {
-    StarRating
+    StarRating,
+    ddForm
+    // ReviewWrite
+  },
+  data : function(){
+    return {
+      exampleDataSet: {},
+      exampleDescriptions: {
+        "title": {
+        "view": "text",
+        "label": "Review title"
+        },
+        "description": {
+        "view": "area",
+        "label": "Content"
+        },
+        "education": {
+        "view": "group",
+        "label": "이 영화가 재밌었나요?"
+        },
+        "education.status": {
+            "view": "radio",
+            "label": "",
+            "defaultValue": "true",
+            "options": [
+                {
+                    "text": "영화 개꿀잼입니다 ㄹㅇ루",
+                    "value": "true"
+                },
+                {
+                    "text": "전 별로에요.",
+                    "value": "false"
+                },
+            ]
+        },
+      }
+    }
   },
   props : {
     movie : {

@@ -9,7 +9,6 @@ import Community from '@/views/Community.vue'
 import Review from '@/views/Review.vue'
 import Tournament from '@/views/Tournament.vue'
 import Test from '@/views/test.vue'
-import ReviewWrite from '@/views/ReviewWrite.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -60,11 +59,6 @@ const routes = [
     name: 'Test',
     component: Test
   },
-  {
-    path: '/testwrite',
-    name: 'ReviewWrite',
-    component: ReviewWrite
-  }
 ]
 
 const router = new VueRouter({

@@ -39,24 +39,34 @@
 			<!-- 좋아요 및 버튼부분 -->
 			<div class="atc_buttons clearfix ">
 				<span class="atc_vote " >
-						<button class="bt_vote vote_area " type="button" @click="likeusers">
-							   <vue-star animate="animated bounceIn" color="#F05654">
-    								<i slot="icon" class="fa fa-heart "></i>
+						<button class="bt_vote vote_area " type="button">
+							   <vue-star animate="animated bounceIn" color="#F05654"  >
+    								<i slot="icon" class="fa fa-heart " @click="likeusers"></i>
 									</vue-star>
               <span class="voted_count text_en">{{like_users}}</span>
             </button>
 				</span>
 				<span class="atc_vote">
-						<button class="bt_vote vote_area" type="button" @click="funnyusers">
+						<!-- <button class="bt_vote vote_area" type="button" @click="funnyusers">
 							<vue-star animate="animated bounceIn" color="#F05654">
     								<i slot="icon" class="far fa-grin-hearts"></i>
 							</vue-star>
-              <span class="voted_count text_en">{{funny_users}}</span></button>
+              <span class="voted_count text_en">{{funny_users}}</span>
+						</button> -->
+
+						<button class="bt_vote vote_area" type="button">
+							<vue-star animate="animated bounceIn" color="#F05654" >
+								<i slot="icon" class="far fa-grin-hearts" ref="funnyusers"   @click="funnyusers"></i>
+							</vue-star>
+              <span class="voted_count text_en">{{funny_users}}</span>
+						</button>
+
 				</span>
 				<span class="atc_vote">
-						<button class="bt_vote vote_area" type="button" @click="helpfulusers">
-							<vue-star animate="animated bounceIn" color="#F05654">
-    								<i slot="icon" class="fas fa-award"></i>
+						<button class="bt_vote vote_area" type="button">
+							<vue-star animate="animated bounceIn" color="#F05654"  >
+									<i slot="icon" class="fas fa-award" @click="helpfulusers"></i>
+									{{helpful_users}}
 							</vue-star>
 						<span class="voted_count text_en">{{helpful_users}}</span></button>
 				</span>
@@ -123,9 +133,10 @@ import axios from 'axios'
 import Gravatar from 'vue-gravatar'
 import jwt_decode from "jwt-decode";
 import VueStar from 'vue-star'
-const BACKEND = process.env.VUE_APP_BACKEND_LINK
 import movieMixin from "@/mixins/movieMixin"
 import CommentListItem from '@/components/CommentListItem'
+
+const BACKEND = process.env.VUE_APP_BACKEND_LINK
 export default {
   name : "ReviewDetail",
   components : {
@@ -169,6 +180,7 @@ export default {
         })
     },
     funnyusers : function () {
+			// this.$refs.funnyusers.click()
       axios({
         method: 'post',
         url: `${BACKEND}community/${this.$route.params.detail}/funny/`,
@@ -262,14 +274,6 @@ export default {
 .VueStar {
 	position: absolute;
 	transform: translate(-48%,-30%)
-}
-.VueStar__ground{
-	width: auto;
-
-}
-.VueStar__decoration{
-	width: auto;
-	height:auto;
 }
 /* * {
   background: #262626;
@@ -1274,6 +1278,8 @@ export default {
 {
 	background-color:#ec5e5e
 }
+
+
 .atc_vote .bt_vote,.cmt_buttons .cmt_vote .bt_vote
 {
 	color:#ec5e5e
