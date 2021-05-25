@@ -1,15 +1,19 @@
 <template>
-  <div>
-    <dd-form
-    :data="exampleDataSet"
-    :descriptions="exampleDescriptions"
-    @submit="submit">
-</dd-form>
+  <div  class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <dd-form
+        :data="exampleDataSet"
+        :descriptions="exampleDescriptions"
+        @submit="submit">
+      </dd-form>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import ddForm from 'vue-dd-form';
+// import ddForm from 'vue-dd-form';
 export default {
   name:'ReviewWrite',
   data: function () {
