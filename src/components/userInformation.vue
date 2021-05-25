@@ -98,7 +98,7 @@ body {
 
 .card {
   width: 400px;
-  margin: 75px auto 0;
+  margin: auto;
   background-color: #fff;
   box-shadow: 0 3px 30px rgba(0,0,0,.14);
   color: #444;
