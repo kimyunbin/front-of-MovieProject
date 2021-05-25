@@ -5,14 +5,14 @@
       <div class="card-text">
         <span class="date">{{review.created_at| timeFor}}</span>
         <h2>{{review.title}}</h2>
-        <p>{{review.content}}내용내용내용내용내용내용내용 내용은 지우면 됩니다. reviewlistitem 에서 </p>
+        <p>{{review.content}}</p>
       </div>
       <div class="card-stats">
         <div class="stat">
           <div class="value">{{review.movie.vote_average}}</div>
           <div class="type">average</div>
         </div>
-        <div class="stat border">
+        <div class="stat borders">
             <div class="value">{{review.funny_users.length+review.like_users.length+review.helpful_users.length}}</div>
             <div class="type">recommend</div>
         </div>
@@ -108,6 +108,8 @@ export default {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   background: rgb(255,7,110)
+  /* background: #34a62ed2; */
+  /* background: #e34305; */
 }
 .card-stats .stat {
   display: flex;
@@ -126,7 +128,7 @@ export default {
   font-size: 22px;
   font-weight: 500;
 }
-.card-stats .border {
+.card-stats .borders {
   border-left: 1px solid rgb(172,26,87);
   border-right: 1px solid rgb(172,26,87);
 }
