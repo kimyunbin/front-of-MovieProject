@@ -11,7 +11,7 @@ export default {
   name: 'Review',
   components : {
     ReviewDetail,
-  }
+  },
 
 }
 </script>

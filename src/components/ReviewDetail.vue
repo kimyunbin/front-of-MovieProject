@@ -40,9 +40,9 @@
 			<div class="atc_buttons clearfix ">
 				<span class="atc_vote " >
 						<button class="bt_vote vote_area " type="button">
-							   <vue-star animate="animated bounceIn" color="#F05654"  >
+							   <VueStar animate="animated bounceIn" color="#F05654"  >
     								<i slot="icon" class="fa fa-heart " @click="likeusers"></i>
-									</vue-star>
+									</VueStar>
               <span class="voted_count text_en">{{like_users}}</span>
             </button>
 				</span>
@@ -55,19 +55,19 @@
 						</button> -->
 
 						<button class="bt_vote vote_area" type="button">
-							<vue-star animate="animated bounceIn" color="#F05654" >
-								<i slot="icon" class="far fa-grin-hearts" ref="funnyusers"   @click="funnyusers"></i>
-							</vue-star>
+							<VueStar animate="animated bounceIn" color="#F05654" >
+								<i slot="icon" class="far fa-grin-hearts" ref="funnyusers"  @click="funnyusers"></i>
+							</VueStar>
               <span class="voted_count text_en">{{funny_users}}</span>
 						</button>
 
 				</span>
 				<span class="atc_vote">
 						<button class="bt_vote vote_area" type="button">
-							<vue-star animate="animated bounceIn" color="#F05654"  >
+							<VueStar animate="animated bounceIn" color="#F05654" :check="true" >
 									<i slot="icon" class="fas fa-award" @click="helpfulusers"></i>
 									{{helpful_users}}
-							</vue-star>
+							</VueStar>
 						<span class="voted_count text_en">{{helpful_users}}</span></button>
 				</span>
 			</div>
@@ -132,9 +132,10 @@
 import axios from 'axios'
 import Gravatar from 'vue-gravatar'
 import jwt_decode from "jwt-decode";
-import VueStar from 'vue-star'
+//import VueStar from 'vue-star'
 import movieMixin from "@/mixins/movieMixin"
 import CommentListItem from '@/components/CommentListItem'
+import VueStar from '@/components/VueStar'
 
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 export default {
@@ -270,10 +271,10 @@ export default {
 }
 </script>
 
-<style >
+<style>
 .VueStar {
 	position: absolute;
-	transform: translate(-48%,-30%)
+	transform: translate(-48%,-30%);
 }
 /* * {
   background: #262626;
