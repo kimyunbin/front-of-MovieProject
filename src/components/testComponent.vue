@@ -183,18 +183,6 @@ export default {
 
 <style>
 /* 1,2,3,4,5,13,14,15 */
-body,button,input,textarea
-{
-font-family:sans-serif
-}
-article,header,section
-{
-display:block
-}
-body
-{
-position:relative
-}
 a img
 {
 border:0

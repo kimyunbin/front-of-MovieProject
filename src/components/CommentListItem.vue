@@ -34,7 +34,7 @@
             <VueStar animate="animated bounceIn" color="#F05654"  >
               <i slot="icon" class="fa fa-heart " @click="likeComment"></i>
             </VueStar>
-            <span class="voted_count">{{Commentliked}}</span>
+            <span class="voted_count" style="padding-left:10px;"> {{Commentliked}}</span>
           </button>
         </div>
         </div></div>
@@ -58,7 +58,7 @@ export default {
   mixins : [movieMixin],
   data: function () {
     return {
-      Commentliked: '',
+      Commentliked: '0',
     }
   },
   props: {
@@ -102,7 +102,7 @@ export default {
 <style scoped>
 .VueStar {
 	position: absolute;
-	transform: translate(-60%,-38%);
+	transform: translate(-50%,-38%);
 }
 
 </style>
