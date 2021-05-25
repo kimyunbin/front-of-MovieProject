@@ -368,7 +368,6 @@ box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05);
 background-color:#f5f5f5;
 background-image:-moz-linear-gradient(top,#fff,#e6e6e6);
 background-image:-webkit-linear-gradient(top,#fff,#e6e6e6);
-background-image:-webkit-gradient(top,#fff,#e6e6e6);
 background-image:-o-linear-gradient(top,#fff,#e6e6e6);
 /* background-image:linear-gradient(top,#fff,#e6e6e6); */
 background-repeat:repeat-x
@@ -1927,10 +1926,15 @@ background-color:#222!important
 {
 background-color:#ec5e5e
 }
-.atc_vote .bt_vote,.cmt_buttons .cmt_vote .bt_vote
+.atc_vote .bt_vote
+{
+color:#123123
+}
+.cmt_buttons .cmt_vote .bt_vote
 {
 color:#ec5e5e
 }
+
 .atc_vote .bt_vote
 {
 background-color:#fbdfdf

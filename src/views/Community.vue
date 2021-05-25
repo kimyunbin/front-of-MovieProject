@@ -53,13 +53,14 @@ export default {
             // localStorage.setItem('jwt', res.data.token)
             // this.$emit('login')
             // this.$router.push({ name: 'Intro' })
+            this.page++
+            this.dupCheck = true
           })
           .catch(err => {
             console.log('sdsdsd');
             console.log(err)
           })
-        this.page++
-        this.dupCheck = true
+
       }
     }
 
