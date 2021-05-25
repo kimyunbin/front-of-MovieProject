@@ -14,7 +14,7 @@
 			<div class="atc_info clearfix">
 				<span class="atc_nickname">
 				<span class="inkpf color round small"><Gravatar :email="detail.user.email" class="profile-img inkpf_img"/></span>
-					<a href="#popup_menu_area" class="member_42982247" onclick="return false">{{detail.user.username}}</a>
+					<router-link :to="{name : 'Mypage', params : {username: this.detail.user.username}}">{{detail.user.username}}</router-link>
         </span>
 				<span class="text_en atc_date font_grey1"><time datetime="2021-05-22T18:05:58+09:00">{{ detail.created_at | timeFor }}</time></span>
 				<div class="atc_info_right text_en font_grey1">				
@@ -244,7 +244,7 @@ export default {
         console.log(err)
       })
 		
-		}
+		},
    
   },
   created: function () {

@@ -53,18 +53,43 @@
         <h5 class="modal-title" id="exampleModalLabel">리뷰 글 작성</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <dd-form
+      <div class="modal-body" style="padding: 15px 50px;">
+        <!-- <dd-form
         :data="exampleDataSet"
         :descriptions="exampleDescriptions"
-        @submit="submit"
         >
-      </dd-form>
+        </dd-form> -->
+        <form>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Review Title</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="리뷰 제목" v-model="exampleDataSet.title">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Review Content</label>
+            <textarea style="overflow-y: scroll;height: 250px; resize: none; font-size: 18px font-weight:500;" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="리뷰 내용" v-model="exampleDataSet.content"></textarea>
+          </div>
+          <br>
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" value="true" name="liked_radio" id="defaultCheck1"  v-model="exampleDataSet.liked" >
+              <label class="form-check-label" for="defaultCheck1" >
+                이 영화 개꿀잼입니다.
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" value="false" name="liked_radio" id="defaultCheck2" v-model="exampleDataSet.liked">
+              <label class="form-check-label" for="defaultCheck2">
+                전 별로에요.
+              </label>
+            </div>
+          </div>
+        </form>
       </div>
-      <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal" @click="createSubmit">Save</button>
+      </div>
     </div>
   </div>
 </div>
@@ -76,48 +101,25 @@
 <script>
 import movieMixin from "@/mixins/movieMixin"
 import StarRating from 'vue-star-rating'
-import ddForm from 'vue-dd-form';
+// import ddForm from 'vue-dd-form';
+import axios from 'axios'
+const BACKEND = process.env.VUE_APP_BACKEND_LINK
 // import ReviewWrite from "@/components/ReviewWrite.vue"
 
 export default {
   name : 'MovieDetailMain',
   components : {
     StarRating,
-    ddForm
+    // ddForm
     // ReviewWrite
   },
   data : function(){
     return {
-      exampleDataSet: {},
-      exampleDescriptions: {
-        "title": {
-        "view": "text",
-        "label": "Review title"
-        },
-        "description": {
-        "view": "area",
-        "label": "Content"
-        },
-        "education": {
-        "view": "group",
-        "label": "이 영화가 재밌었나요?"
-        },
-        "education.status": {
-            "view": "radio",
-            "label": "",
-            "defaultValue": "true",
-            "options": [
-                {
-                    "text": "영화 개꿀잼입니다 ㄹㅇ루",
-                    "value": "true"
-                },
-                {
-                    "text": "전 별로에요.",
-                    "value": "false"
-                },
-            ]
-        },
-      }
+      exampleDataSet: {
+        title: '',
+        content: '',
+        liked: "true",
+      },
     }
   },
   props : {
@@ -132,12 +134,44 @@ export default {
         return genre.name
       }).join(" | ")
     }
-  }
+  },
+  methods: {
+    setToken: function () {
+      const config = {
+        Authorization: `JWT ${this.$store.state.token}`
+      }
+      return config
+    },
+    createSubmit: function () {
+      axios({
+        method: 'post',
+        url: `${BACKEND}community/${this.$route.params.movie_pk}/review/`,
+        headers: this.setToken(),
+				data: {
+					'title':this.exampleDataSet.title,
+					'content':this.exampleDataSet.content,
+					'liked':this.exampleDataSet.liked
+					}
+      })
+        .then(res => {
+          console.log(res)
+          // body.className =''
+          this.$router.push({ name: 'Review', params:{detail: res.data.id} })
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  },
 }
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900');
+button--submit{
+  visibility: hidden;
+  opacity: 0;
+}
 h2
 {
   font-size: 30px;

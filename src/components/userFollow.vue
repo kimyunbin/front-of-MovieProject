@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import axios from 'axios'
 import jwt_decode from "jwt-decode";
+import axios from 'axios'
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 export default {
   name: 'userFollow',
