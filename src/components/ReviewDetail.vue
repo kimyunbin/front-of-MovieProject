@@ -13,10 +13,10 @@
 			</h1>
 			<div class="atc_info clearfix">
 				<span class="atc_nickname">
-				<span class="inkpf color round small"><img class="inkpf_img" src="//img.extmovie.com/files/member_extra_info/profile_image/247/982/042/42982247.jpg?20190130002956" alt=""></span>
+				<span class="inkpf color round small"><Gravatar :email="detail.user.email" class="profile-img inkpf_img"/></span>
 					<a href="#popup_menu_area" class="member_42982247" onclick="return false">{{detail.user.username}}</a>
         </span>
-				<span class="text_en atc_date font_grey1"><time datetime="2021-05-22T18:05:58+09:00">{{someDate | moment("detail.created_at","now")}}</time></span>
+				<span class="text_en atc_date font_grey1"><time datetime="2021-05-22T18:05:58+09:00">{{ detail.created_at | timeFor }}</time></span>
 				<div class="atc_info_right text_en font_grey1">				
 					<span class="count_vote pt_col"><i class="fas fa-heart" title="추천 수"></i> {{like_users+funny_users+helpful_users}}</span>		 		
 					<span class="count_cmt pt_col2"><i class="fas fa-comment-dots" tilte="댓글"></i> {{detail.comment_count}}</span>
@@ -37,39 +37,28 @@
       <br>
 
 			<!-- 좋아요 및 버튼부분 -->
-			<div class="atc_buttons clearfix">
-				<!-- <div class="atc_buttons_etc">
-					<span class="ink_bubble_wrap">
-						<button class="bt_report ib ib_monoC has_bubble" type="button" onclick="insertWarn('로그인 해주세요.')">
-							<i class="fas fa-exclamation-triangle only" title="신고"></i>
-						</button>
-						<span class="ink_bubble">신고</span>
-					</span>
-					<span class="ink_bubble_wrap">
-						<button class="bt_share ib ib_monoC has_bubble" type="button" onclick="inkPop('atc_share')">
-							<i class="fas fa-share only" title="공유"></i>
-						</button>
-						<span class="ink_bubble">공유</span>
-					</span>
-					<span class="ink_bubble_wrap">
-						<button class="bt_scrap ib ib_monoC has_bubble" type="button" onclick="insertWarn('로그인 해주세요.')">
-							<i class="fas fa-star only" title="스크랩"></i>
-						</button>
-						<span class="ink_bubble">스크랩</span>
-					</span>											
-				</div> -->
-				<span class="atc_vote">
-						<button class="bt_vote vote_area" type="button" @click="likeusers">
-              좋아요
+			<div class="atc_buttons clearfix ">
+				<span class="atc_vote " >
+						<button class="bt_vote vote_area " type="button" @click="likeusers">
+							   <vue-star animate="animated bounceIn" color="#F05654">
+    								<i slot="icon" class="fa fa-heart "></i>
+									</vue-star>
               <span class="voted_count text_en">{{like_users}}</span>
             </button>
 				</span>
 				<span class="atc_vote">
-						<button class="bt_vote vote_area" type="button" @click="funnyusers">재밌어요
+						<button class="bt_vote vote_area" type="button" @click="funnyusers">
+							<vue-star animate="animated bounceIn" color="#F05654">
+    								<i slot="icon" class="far fa-grin-hearts"></i>
+							</vue-star>
               <span class="voted_count text_en">{{funny_users}}</span></button>
 				</span>
 				<span class="atc_vote">
-						<button class="bt_vote vote_area" type="button" @click="helpfulusers">도움되요<span class="voted_count text_en">{{helpful_users}}</span></button>
+						<button class="bt_vote vote_area" type="button" @click="helpfulusers">
+							<vue-star animate="animated bounceIn" color="#F05654">
+    								<i slot="icon" class="fas fa-award"></i>
+							</vue-star>
+						<span class="voted_count text_en">{{helpful_users}}</span></button>
 				</span>
 			</div>
 		</div>
@@ -79,100 +68,18 @@
 			<div class="cmt_wrap has_top">
 				<!-- 댓글리스트 -->
 				<div class="cmt_list">
-					<!-- 댓글 단일요소 -->
-					<!-- <article class="cmt_unit" id="comment_65603837">
-						<div class="inkpf_wrap">
-							<span class="inkpf round"></span>					
-							<span class="cmt_rank cmt_rank1">1등</span>			
-						</div>
-						<div class="cmt_header">
-							<a href="#popup_menu_area" class="nickname member_62105361" onclick="return false">
-								<img src="https://extmovie.com/modules/point/icons/xeicon_coa/5.gif" alt="[레벨:5]" title="포인트:3008point (76%), 레벨:5/99" class="xe_point_level_icon" style="vertical-align:middle;margin-right:3px;">
-								낯선하루
-							</a>															
-							<div class="cmt_ctrl_wrap ctrl_wrap">
-								<button class="bt_cmt_ctrl bt_ctrl" type="button" onclick="openCtrl(this)">
-									<i class="fas fa-ellipsis-h" title="댓글 메뉴"></i>
-								</button>						
-								<div class="cmt_ctrl ctrl_body">
-									<a class="bt" href="javascript:void(0)" onclick="insertWarn('권한이 없습니다.')">
-										<i class="fas fa-comment-dots"></i> 
-										댓글
-									</a>																				
-								</div>
-							</div>
-						</div>
-						<div class="cmt_body">
-							<div class="comment_65603837_62105361 rhymix_content xe_content" data-pswp-uid="2">와… 저 포스터 정말 가지고 싶네요! ^^;;</div>								
-							<div class="cmt_buttons"><div class="cmt_vote">
-								<a class="bt bt2" href="javascript:void(0)">댓글</a>
-								<div class="bt_wrap">
-									<button class="text_en bt bt_vote" type="button" @click="likeComment" title="추천">
-										<i class="fas fa-heart"></i> 
-										<span class="voted_count">0</span>
-									</button>																							
-								</div>
-								</div></div>
-								<div class="cmt_date_wrap text_en font_grey1">
-									<span class="cmt_time">18:12</span>
-									<div class="cmt_date">1일 전 </div>
-								</div>
-						</div>
-					</article> -->
-
           <CommentListItem 
             v-for="(comment, idx) in comments"
             :key ="idx"
             :comment="comment"
             />
-					<!-- 댓글 2
-					<article class="cmt_unit" id="comment_65603837">
-						<div class="inkpf_wrap">
-							<span class="inkpf round"></span>					
-							<span class="cmt_rank cmt_rank1">1등</span>			
-						</div>
-						<div class="cmt_header">
-							<a href="#popup_menu_area" class="nickname member_62105361" onclick="return false">
-								<img src="https://extmovie.com/modules/point/icons/xeicon_coa/5.gif" alt="[레벨:5]" title="포인트:3008point (76%), 레벨:5/99" class="xe_point_level_icon" style="vertical-align:middle;margin-right:3px;">
-								낯선하루
-							</a>															
-							<div class="cmt_ctrl_wrap ctrl_wrap">
-								<button class="bt_cmt_ctrl bt_ctrl" type="button" onclick="openCtrl(this)">
-									<i class="fas fa-ellipsis-h" title="댓글 메뉴"></i>
-								</button>						
-								<div class="cmt_ctrl ctrl_body">
-									<a class="bt" href="javascript:void(0)" onclick="insertWarn('권한이 없습니다.')">
-										<i class="fas fa-comment-dots"></i> 
-										댓글
-									</a>																				
-								</div>
-							</div>
-						</div>
-						<div class="cmt_body">
-							<div class="comment_65603837_62105361 rhymix_content xe_content" data-pswp-uid="2">와… 저 포스터 정말 가지고 싶네요! ^^;;</div>								
-							<div class="cmt_buttons"><div class="cmt_vote">
-								<a class="bt bt2" href="javascript:void(0)" onclick="insertWarn('권한이 없습니다.')">댓글</a>
-								<div class="bt_wrap">
-									<button class="text_en bt bt_vote" type="button" onclick="insertWarn('권한이 없습니다.')" title="추천">
-										<i class="fas fa-heart"></i> 
-										<span class="voted_count">0</span>
-									</button>																							
-								</div>
-								</div></div>
-								<div class="cmt_date_wrap text_en font_grey1">
-									<span class="cmt_time">18:12</span>
-									<div class="cmt_date">1일 전 </div>
-								</div>
-						</div> 
-					</article> -->
-
 			</div>
 			</div>
 
 			<!-- 댓글 작성부분 -->
 			<div class="cmt_write cmt_write_unit">
-				<span class="inkpf round"></span>
-				<form action="/" method="post" class="cmt_form" onsubmit="" editor_sequence="65603779">
+				<span class="inkpf round"><Gravatar :email="useremail" class="profile-img inkpf_img"/></span>
+				<form v-on:submit.prevent="commentCreate" action="/" method="post" class="cmt_form" onsubmit="" editor_sequence="65603779">
 					<input type="hidden" name="error_return_url" value="/movietalk/65603779?category=376">
 					<input type="hidden" name="act" value="dispBoardContent">
 					<input type="hidden" name="mid" value="movietalk">
@@ -182,21 +89,21 @@
 					<div class="cmt_write_input text_ver">
 						<input type="hidden" name="use_html" value="Y">
 						<input type="hidden" id="htm_65603779" value="n">
-						<textarea class="cmt_textarea" id="editor_65603779" cols="50" rows="4" placeholder="댓글 내용을 입력해주세요." style="width: 100%;"></textarea>
+						<textarea class="cmt_textarea" id="editor_65603779" cols="50" rows="4" placeholder="댓글 내용을 입력해주세요." style="width: 100%;" @keyup.enter="commentCreate" v-model="commentContent"></textarea>
 					</div>
 					<div class="cmt_write_option">
-						<button class="bt_write_type unit" type="button" onclick="">
+						<!-- <button class="bt_write_type unit" type="button" onclick="">
 							<i class="fas fa-chevron-circle-right"></i> 에디터 모드
-						</button>
-						<span class="write_option"></span>
+						</button> -->
+						<!-- <span class="write_option"></span> -->
 						<div class="bt_area bt_right">
-							<button class="ib ib2 ib_mono bt_vote_submit" onclick="" type="submit">
+							<!-- <button class="ib ib2 ib_mono bt_vote_submit" onclick="" type="submit">
 								<i class="fas fa-heart pt_col"></i> + 등록
-							</button>											
+							</button>											 -->
 							<button class="ib ib2 ib_color" type="submit">댓글 등록</button>
 						</div>
 					</div>
-					<input type="hidden" name="_rx_csrf_token" value="tdpiVCuo6nXWnaGi"></form>
+				</form>
 			</div>
 
 			<!-- 댓글부분 끝 -->
@@ -213,12 +120,9 @@
 
 <script>
 import axios from 'axios'
-import Vue from 'vue'
-import vueMoment from 'vue-moment' 
-Vue.use(vueMoment)
-
-
-// import VueStar from 'vue-star'
+import Gravatar from 'vue-gravatar'
+import jwt_decode from "jwt-decode";
+import VueStar from 'vue-star'
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 import movieMixin from "@/mixins/movieMixin"
 import CommentListItem from '@/components/CommentListItem'
@@ -226,7 +130,8 @@ export default {
   name : "ReviewDetail",
   components : {
     CommentListItem,
-    // VueStar,
+		Gravatar,
+    VueStar,
   },
   mixins : [movieMixin],
   data: function () {
@@ -236,6 +141,9 @@ export default {
       funny_users:'',
       helpful_users: '',
       comments: [],
+			commentContent: '',
+			useremail:'',
+			isActive:'heart-active',
     }
   },
   methods:{
@@ -252,12 +160,8 @@ export default {
         headers: this.setToken(),
       })
         .then(res => {
-          console.log(res)
+          // console.log(res)
           this.like_users = res.data.count
-          // this.credentials.username=''
-          // this.credentials.password=''
-          // this.toggleForm()
-          
         })
         .catch(err => {
 
@@ -271,15 +175,10 @@ export default {
         headers: this.setToken(),
       })
         .then(res => {
-          console.log(res)
-          this.funny_users = res.data.count
-          // this.credentials.username=''
-          // this.credentials.password=''
-          // this.toggleForm()
-          
+          // console.log(res)
+          this.funny_users = res.data.count       
         })
         .catch(err => {
-
           console.log(err)
         })
     },
@@ -290,18 +189,50 @@ export default {
         headers: this.setToken(),
       })
         .then(res => {
-          console.log(res)
-          this.helpful_users = res.data.count
-          // this.credentials.username=''
-          // this.credentials.password=''
-          // this.toggleForm()
-          
+          // console.log(res)
+          this.helpful_users = res.data.count        
         })
         .catch(err => {
-
           console.log(err)
         })
     },
+		commentCreate: function () {
+			axios({
+        method: 'post',
+        url: `${BACKEND}community/${this.detail.id}/comment/`,
+        headers: this.setToken(),
+				data: {
+					'content':this.commentContent
+					}
+      })
+        .then(res => {
+          console.log(res)
+					this.$set(this.comments,0,res.data.content)
+					this.test()
+					this.commentContent = ''
+        })
+        .catch(err => {
+          console.log(err)
+        })
+		},
+		test : function () {
+			axios({
+        method: 'get',
+        url: `${BACKEND}community/${this.$route.params.detail}`,
+      })
+      .then(res => {
+        // console.log(res)
+        this.detail = res.data[0]
+        this.comments = res.data[0].comment_set
+        this.like_users = res.data[0].like_users.length
+        this.funny_users = res.data[0].funny_users.length
+        this.helpful_users = res.data[0].helpful_users.length
+      })
+      .catch(err => {
+        console.log(err)
+      })
+		
+		}
    
   },
   created: function () {
@@ -316,16 +247,22 @@ export default {
         this.like_users = res.data[0].like_users.length
         this.funny_users = res.data[0].funny_users.length
         this.helpful_users = res.data[0].helpful_users.length
-        console.log(this.detail.comment_set)
+				const decoded = jwt_decode(this.$store.state.token)
+		    this.useremail = decoded.email
       })
       .catch(err => {
         console.log(err)
       })
+		
   }
 }
 </script>
 
 <style >
+.VueStar {
+	position: absolute;
+	transform: translate(-48%,-30%)
+}
 /* * {
   background: #262626;
 
@@ -1346,5 +1283,28 @@ export default {
 	color:#41bc99
 }
 
+.heart{
+  position: absolute;
+  background: url("../assets/follow/follow.png") no-repeat;
+  background-position: left center;
+  background-size: 2900%;
+  height: 90px;
+  width: 90px;
+  top: 50%;
+  left: 44%;
+  transform: translate(0%,0%);
+}
+.heart.heart-active{
+  animation: animate .8s steps(28) 1;
+  background-position: right;
+}
+@keyframes animate {
+  0%{
+    background-position: left;
+  }
+  100%{
+    background-position: right;
+  }
+}
 
 </style>

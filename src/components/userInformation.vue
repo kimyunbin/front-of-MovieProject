@@ -64,7 +64,7 @@ export default {
           headers: this.setToken()
         })
         .then(res => {
-          console.log(res)
+          // console.log(res)
           this.userInformations = res.data
           this.followerCount = res.data.followings
           this.imgUrl =`https://s.gravatar.com/avatar/${res.data.email_hash}?d=identicon`

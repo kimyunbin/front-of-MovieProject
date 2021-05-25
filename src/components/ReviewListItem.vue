@@ -3,7 +3,7 @@
     <div class="card" @click="detail">
       <div class="card-image" v-bind:style="{backgroundImage:'url('+this.bgImg+')'}"></div>
       <div class="card-text">
-        <span class="date">{{review.created_at}}</span>
+        <span class="date">{{review.created_at| timeFor}}</span>
         <h2>{{review.title}}</h2>
         <p>{{review.content}}내용내용내용내용내용내용내용 내용은 지우면 됩니다. reviewlistitem 에서 </p>
       </div>
@@ -13,14 +13,8 @@
           <div class="type">average</div>
         </div>
         <div class="stat border">
-          <div v-if ="review.liked">
-            <div class="value"><i class="far fa-grin fa-lg"></i></div>
+            <div class="value">{{review.funny_users.length+review.like_users.length+review.helpful_users.length}}</div>
             <div class="type">recommend</div>
-          </div>
-          <div v-else>
-            <div class="value"><i class="far fa-angry fa-lg"></i></div>
-            <div class="type">recommend</div>
-          </div>
         </div>
         <div class="stat">
           <div class="value">{{review.comment_count}}</div>
@@ -32,9 +26,11 @@
 </template>
 
 <script>
+import movieMixin from "@/mixins/movieMixin"
 export default {
   
   name: 'ReviewListItem',
+  mixins : [movieMixin],
   props: {
     review: {
       type: Object,

@@ -370,7 +370,7 @@ background-image:-moz-linear-gradient(top,#fff,#e6e6e6);
 background-image:-webkit-linear-gradient(top,#fff,#e6e6e6);
 background-image:-webkit-gradient(top,#fff,#e6e6e6);
 background-image:-o-linear-gradient(top,#fff,#e6e6e6);
-background-image:linear-gradient(top,#fff,#e6e6e6);
+/* background-image:linear-gradient(top,#fff,#e6e6e6); */
 background-repeat:repeat-x
 }
 .rhymix_button:active,.rhymix_button:hover,.rhymix_button[disabled]
