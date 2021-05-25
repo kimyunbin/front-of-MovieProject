@@ -51,11 +51,13 @@
 <script>
 import movieMixin from "@/mixins/movieMixin"
 import StarRating from 'vue-star-rating'
+import ReviewWrite from "@/components/ReviewWrite.vue"
 
 export default {
   name : 'MovieDetailMain',
   components : {
-    StarRating
+    StarRating,
+    ReviewWrite
   },
   props : {
     movie : {
