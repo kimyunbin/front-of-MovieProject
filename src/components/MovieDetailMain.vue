@@ -43,7 +43,7 @@
           </div>
         </div>
         
-        <a href="javascript:void(0)" class="theme-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" v-if="token"><i class="icofont icofont-ticket"></i> 평가하기 </a>
+        <a href="javascript:void(0)" class="theme-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" v-if="token"><i class="icofont icofont-ticket"></i> 리뷰쓰기 </a>
       </div>
     </div>
 
