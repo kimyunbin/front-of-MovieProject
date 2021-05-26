@@ -2,12 +2,14 @@
   <div id="background" ref="scrollTarget"> 
     <!--  @scroll="handleNotificationListScroll"  -->
     <ReviewList :reviews="reviews" />
+    <div id="end" style="visibility: hidden;">리뷰 종료</div>
   </div>
 </template>
 
 <script>
 import ReviewList from '@/components/ReviewList'
 import axios from 'axios'
+import _ from 'lodash'
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 
 export default {
@@ -23,14 +25,22 @@ export default {
     ReviewList
   },
   methods : {
-    // 무한스크롤 정의
-    handleNotificationListScroll : function() {
-      console.log("작동체크")
-      const { scrollHeight, scrollTop, clientHeight } = this.$refs.scrollTarget //e.target;//
-      const isAtTheBottom = scrollHeight === scrollTop + clientHeight;
-      console.log(scrollHeight, scrollTop, clientHeight,isAtTheBottom)
-      // 일정 한도 밑으로 내려오면 함수 실행
-      if (isAtTheBottom) this.getData();
+    isScrolledIntoView (el) {
+      let rect = el.getBoundingClientRect()
+      let elemTop = rect.top
+      let elemBottom = rect.bottom
+
+      let isVisible = elemTop < window.innerHeight && elemBottom >= 0
+      return isVisible
+    },
+    scroll () {
+      window.onscroll = _.throttle(() => {
+        let scrolledTo = document.querySelector('#end')
+
+        if (scrolledTo && this.isScrolledIntoView(scrolledTo)) {
+          this.getData()
+        }
+      }, 500)
     },
 
     getData : function(){
@@ -70,7 +80,7 @@ export default {
     this.getData()
   },
   mounted () {
-    window.addEventListener('scroll', this.handleNotificationListScroll)
+    this.scroll()
   }
 }
 </script>
