@@ -40,7 +40,7 @@
 			<div class="atc_buttons clearfix ">
 				<span class="atc_vote " >
 						<button class="bt_vote vote_area " type="button">
-							   <VueStar animate="animated bounceIn" color="#F05654" :check="like_users | checkChecked(login_user.id)" >
+							   <VueStar animate="animate__animated animate__jackInTheBox" color="#F05654" :check="like_users | checkChecked(login_user.id)" >
     								<i slot="icon" class="fa fa-heart " @click="likeusers"></i>
 									</VueStar>
               <span class="voted_count text_en">{{like_users.length }}</span>
@@ -48,7 +48,7 @@
 				</span>
 				<span class="atc_vote">
 						<button class="bt_vote vote_area" type="button">
-							<VueStar animate="animated bounceIn" color="#F05654" :check="funny_users | checkChecked(login_user.id)" >
+							<VueStar animate="animate__animated animate__zoomIn" color="#F05654" :check="funny_users | checkChecked(login_user.id)" >
 								<i slot="icon" class="far fa-grin-hearts" ref="funnyusers"  @click="funnyusers"></i>
 							</VueStar>
               <span class="voted_count text_en">{{funny_users.length }}</span>
@@ -57,7 +57,7 @@
 				</span>
 				<span class="atc_vote">
 						<button class="bt_vote vote_area" type="button">
-							<VueStar animate="animated bounceIn" color="#F05654" :check="helpful_users | checkChecked(login_user.id)" >
+							<VueStar animate="animate__animated animate__rotateIn" color="#F05654" :check="helpful_users | checkChecked(login_user.id)" >
 									<i slot="icon" class="fas fa-award" @click="helpfulusers"></i>
 									{{helpful_users}}
 							</VueStar>
