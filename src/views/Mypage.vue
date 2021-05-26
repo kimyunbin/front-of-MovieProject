@@ -24,7 +24,6 @@ export default {
   name:'Mypage',
   components:{
     userInformation,
-<<<<<<< HEAD
     MovieCarousel,
   },
   mixins : [movieMixin],
