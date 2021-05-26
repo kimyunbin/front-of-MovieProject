@@ -8,7 +8,7 @@
       
       <p class="full-name">{{userInformations.username}} 
         </p>
-      <p class="username">{{userInformations.created_at}}</p>
+      <p class="username">{{userInformations.created_at.substring(0,10)}}</p>
       <!-- <p class="city">New York</p> -->
       <p class="desc">{{userInformations.email}}</p>
       <p><userFollow  @count="countFollow"/></p>
