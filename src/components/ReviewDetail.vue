@@ -9,7 +9,7 @@
 		<!-- 글제목 부분 -->
 		<header class="atc_header">
 			<h1>
-				<a href="" class="atc_title">{{detail.title}}</a>
+				<a href="javascript:void(0)" class="atc_title">{{detail.title}}</a>
 			</h1>
 			<div class="atc_info clearfix">
 				<span class="atc_nickname">
@@ -28,7 +28,7 @@
 		  <!-- 글 내용 부분 -->
 			<div class="document_65603779_42982247 rhymix_content xe_content" data-pswp-uid="1">
 				<p>
-					<img :src="detail.movie|imageURL" alt="movie_poster" data-pswp-pid="1">
+					<img :src="detail.movie|imageURL" alt="movie_poster" data-pswp-pid="1" @click="$router.push(`/movies/${detail.movie.id}`)">
 				</p>
         <br>
 				<p>{{detail.content}}</p>
@@ -40,7 +40,7 @@
 			<div class="atc_buttons clearfix ">
 				<span class="atc_vote " >
 						<button class="bt_vote vote_area " type="button">
-							   <VueStar animate="animated bounceIn" color="#F05654" :check="like_users | checkChecked(login_user.id)" >
+							   <VueStar animate="animate__animated animate__jackInTheBox" color="#F05654" :check="like_users | checkChecked(login_user.id)" >
     								<i slot="icon" class="fa fa-heart " @click="likeusers"></i>
 									</VueStar>
               <span class="voted_count text_en">{{like_users.length }}</span>
@@ -48,7 +48,7 @@
 				</span>
 				<span class="atc_vote">
 						<button class="bt_vote vote_area" type="button">
-							<VueStar animate="animated bounceIn" color="#F05654" :check="funny_users | checkChecked(login_user.id)" >
+							<VueStar animate="animate__animated animate__zoomIn" color="#F05654" :check="funny_users | checkChecked(login_user.id)" >
 								<i slot="icon" class="far fa-grin-hearts" ref="funnyusers"  @click="funnyusers"></i>
 							</VueStar>
               <span class="voted_count text_en">{{funny_users.length }}</span>
@@ -57,7 +57,7 @@
 				</span>
 				<span class="atc_vote">
 						<button class="bt_vote vote_area" type="button">
-							<VueStar animate="animated bounceIn" color="#F05654" :check="helpful_users | checkChecked(login_user.id)" >
+							<VueStar animate="animate__animated animate__rotateIn" color="#F05654" :check="helpful_users | checkChecked(login_user.id)" >
 									<i slot="icon" class="fas fa-award" @click="helpfulusers"></i>
 									{{helpful_users}}
 							</VueStar>
@@ -776,7 +776,7 @@ padding-bottom:200px
 }
 .ink_container
 {
-width:1200px;
+width:100%;
 margin:0 auto;
 border-top:1px solid transparent
 }
@@ -791,8 +791,8 @@ padding-bottom:25px
 }
 .ink_content
 {
-float:left;
-width:900px
+margin: 0 auto;
+width:90%;
 }
 .ink_bt_top,.ink_top
 {

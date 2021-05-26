@@ -24,7 +24,7 @@
 
         <div class="bt_wrap" ><!--@click="likeComment"-->																						 
           <button class="text_en bt bt_vote" type="button" title="추천" >
-            <VueStar animate="animated bounceIn" color="#F05654" :check="comment.like_users | checkChecked(loginUser.id)">
+            <VueStar animate="animate__animated animate__jackInTheBox" color="#F05654" :check="comment.like_users | checkChecked(loginUser.id)">
               <i slot="icon" class="fa fa-heart " @click="likeComment"></i>
             </VueStar>
             <span class="voted_count" style="padding-left:10px;"> {{comment.like_users.length }}</span>
