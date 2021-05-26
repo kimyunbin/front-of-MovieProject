@@ -52,7 +52,6 @@ export default {
   data: function () {
     return {
       isTrue: true,
-      username: ''
     }
   },
 
@@ -62,22 +61,16 @@ export default {
       this.$router.push({name : 'Login' })
       
     },
-
-    
-    
   },
   computed:{
     token : function () {
       return this.$store.state.token
     },
-
+    username : function(){
+      return jwt_decode(this.token).username
+    }
   },
-  created: function (){
-    const decoded = jwt_decode(this.token)
-    // console.log(decoded);
-    this.username = decoded.username
-  }
- 
+
 }
 </script>
 
