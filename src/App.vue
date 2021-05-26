@@ -26,6 +26,9 @@
             </span>
             <!--  로그아웃 시 보이는 것 -->
             <span class="navbar-nav" v-else>
+              <li class="nav-item">
+                <router-link :to="{name: 'Community'}" class="nav-link active">커뮤니티</router-link>
+              </li>
               <li class="nav-item" >
                 <router-link :to="{name: 'Login'}" class="nav-link active">Login</router-link>
               </li>
