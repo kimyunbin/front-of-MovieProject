@@ -8,7 +8,7 @@
             <h2>Sign In</h2>
             <input type="text" placeholder="Username" id="loginUsername" v-model="credentials.username">
             <input type="password" placeholder="Password" id="loginPassword" v-model="credentials.password">
-            <input type="submit" placeholder="login">
+            <input type="submit" placeholder="login" @click="login">
             <p class="signup">don't have an account? 
               <a href="javascript:void(0);" @click="toggleForm">Sign up.</a>
             </p>

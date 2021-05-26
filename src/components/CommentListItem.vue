@@ -31,11 +31,11 @@
             <i class="fas fa-heart" ></i> 
             <span class="voted_count">{{Commentliked}}</span>
           </button>																							 -->
-          <button class="text_en bt bt_vote" type="button" title="추천">
-            <VueStar animate="animated bounceIn" color="#F05654"  >
+          <button class="text_en bt bt_vote" type="button" title="추천" >
+            <VueStar animate="animated bounceIn" color="#F05654" :check="comment.like_users | checkChecked(loginUser.id)">
               <i slot="icon" class="fa fa-heart " @click="likeComment"></i>
             </VueStar>
-            <span class="voted_count" style="padding-left:10px;"> {{Commentliked}}</span>
+            <span class="voted_count" style="padding-left:10px;"> {{comment.like_users.length }}</span>
           </button>
         </div>
         </div></div>
@@ -57,32 +57,29 @@ const BACKEND = process.env.VUE_APP_BACKEND_LINK
 export default {
   name:'CommentListItem',
   mixins : [movieMixin],
-  data: function () {
-    return {
-      Commentliked: '0',
-    }
-  },
   props: {
     comment: {
       type: Object,
+    },
+    loginUser : {
+      type : Object,
     }
   },
+  filters : {
+    checkChecked : function(arr, id){
+      return arr.includes(id)
+    } 
+  },
   methods : {
-    setToken: function () {
-      const config = {
-        Authorization: `JWT ${this.$store.state.token}`
-      }
-      return config
-    },
     likeComment: function () {
       axios({
         method: 'post',
         url: `${BACKEND}community/${this.comment.id}/comment/like/`,
-        headers: this.setToken()
+        headers: this.setToken(this.$store.state.token)
       })
       .then(res => {
-        // console.log(res)
-        this.Commentliked = res.data.count
+        console.log(res)
+        this.$emit('deleteComment')
       })
       .catch(err => {
         console.log(err)

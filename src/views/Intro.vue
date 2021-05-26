@@ -19,7 +19,6 @@ export default {
   name : 'Intro',
   methods : {
     toMoviesPage : function(){
-      console.log("asdfasdf")
       this.$router.push({name : 'Movies' })
     }
   }
