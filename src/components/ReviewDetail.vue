@@ -776,7 +776,7 @@ padding-bottom:200px
 }
 .ink_container
 {
-width:1200px;
+width:100%;
 margin:0 auto;
 border-top:1px solid transparent
 }
@@ -791,8 +791,8 @@ padding-bottom:25px
 }
 .ink_content
 {
-float:left;
-width:900px
+margin: 0 auto;
+width:90%;
 }
 .ink_bt_top,.ink_top
 {
