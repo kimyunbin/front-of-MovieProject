@@ -1,20 +1,25 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <img :src="imgUrl" alt="profile Image" class="profile-img">
+      <Gravatar :email="userInformations.email" class="profile-img"/>
+      <!-- <img :src="imgUrl" alt="profile Image" class="profile-img"> -->
     </div>
     <div class="card-body">
-      <p class="full-name">{{userInformations.username}}</p>
+      
+      <p class="full-name">{{userInformations.username}} 
+        </p>
       <p class="username">{{userInformations.created_at}}</p>
       <!-- <p class="city">New York</p> -->
       <p class="desc">{{userInformations.email}}</p>
+      <p><userFollow  @count="countFollow"/></p>
+      
     </div>
     <div class="card-footer">
       <div class="col vr">
-        <p><span class="count" >{{userInformations.followers}}</span>Followers</p>
+        <p><span class="count">{{followerCount}}</span>Followers</p>
       </div>
       <div class="col">
-        <p><span class="count">{{userInformations.followings}}</span>Following</p>
+        <p><span class="count" id="following">{{userInformations.followers}}</span>Following</p>
       </div>
     </div>
   </div>
@@ -23,12 +28,17 @@
 <script>
 
 import axios from 'axios'
+import userFollow from '@/components/userFollow'
+import Gravatar from 'vue-gravatar'
+
+const BACKEND = process.env.VUE_APP_BACKEND_LINK
 export default {
   name:'userInformation',
   data: function (){
     return {
       userInformations: '',
       imgUrl: null,
+      followerCount: '',
     }
   },
   methods:{
@@ -38,18 +48,25 @@ export default {
       }
       return config
     },
+    countFollow: function (data) {
+      // console.log(data.count);
+      const followCount =document.querySelector('#following')
+      followCount.innerText =data
+    }
+
     
   },
 
   created: function () {
     axios({
           method: 'get',
-          url: `http://127.0.0.1:8000/accounts/${this.$route.params.username}`,
+          url: `${BACKEND}accounts/${this.$route.params.username}`,
           headers: this.setToken()
         })
         .then(res => {
           // console.log(res)
           this.userInformations = res.data
+          this.followerCount = res.data.followings
           this.imgUrl =`https://s.gravatar.com/avatar/${res.data.email_hash}?d=identicon`
         })
         .catch(err => {
@@ -61,6 +78,10 @@ export default {
       return this.$store.state.token
     }
   },
+  components:{
+    userFollow,
+    Gravatar,
+  }
 
 }
 </script>
@@ -77,7 +98,7 @@ body {
 
 .card {
   width: 400px;
-  margin: 75px auto 0;
+  margin: auto;
   background-color: #fff;
   box-shadow: 0 3px 30px rgba(0,0,0,.14);
   color: #444;

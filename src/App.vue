@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <router-link :to="{name: 'Movies'}" class="navbar-brand">Navbar</router-link>
+        <router-link :to="{name: 'Movies'}" class="navbar-brand">MOYA</router-link>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -11,23 +11,24 @@
           <ul class="navbar-nav">
             <!-- 로그인시 보이는 것 -->
             <span class="navbar-nav" v-if="token">
-
               <li class="nav-item">
-                <router-link :to="{name: 'Movies'}" class="nav-link active" >Home</router-link>
+                <router-link :to="`/tournament`" class="nav-link active">영화월드컵</router-link>
               </li>
               <li class="nav-item">
-                <a class="btn nav-link active" @click="logout">Logout</a>
+                <router-link :to="{name: 'Community'}" class="nav-link active">커뮤니티</router-link>
               </li>
               <li class="nav-item">
-                <router-link :to="{name: 'Login'}" class="nav-link active">Community</router-link>
+                <router-link :to="`/mypage/${username}`" class="nav-link active">마이페이지</router-link>
               </li>
               <li class="nav-item">
-                <router-link :to="`/mypage/${username}`" class="nav-link active">Mypage</router-link>
+                <router-link to="javascript:void(0)" class="nav-link active" @click.native="logout">로그아웃</router-link>
               </li>
             </span>
             <!--  로그아웃 시 보이는 것 -->
             <span class="navbar-nav" v-else>
-
+              <li class="nav-item">
+                <router-link :to="{name: 'Community'}" class="nav-link active">커뮤니티</router-link>
+              </li>
               <li class="nav-item" >
                 <router-link :to="{name: 'Login'}" class="nav-link active">Login</router-link>
               </li>
@@ -40,7 +41,7 @@
       </div>
     </nav>
 
-    <router-view/>
+    <router-view :key="$route.fullPath"/>
   </div>
 </template>
 <script>
@@ -80,12 +81,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
 }
 
@@ -101,4 +102,9 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+.navbar-nav .nav-item{
+  text-align:center;
+}
 </style>
+

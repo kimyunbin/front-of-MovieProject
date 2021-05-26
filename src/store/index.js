@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate';
-// import jwt_decode from "jwt-decode";
 Vue.use(Vuex)
+
 
 export default new Vuex.Store({
   plugins: [
@@ -10,6 +10,8 @@ export default new Vuex.Store({
   ],
   state: {
     token: '',
+    nextPage : '',
+    nextparams: '',
   },
   mutations: {
     LOGIN : function(state, res) {
@@ -17,17 +19,27 @@ export default new Vuex.Store({
       state.token = token
     },
     LOGOUT : function(state) {
-      state.token= ''
+      state.token =''
+    },
+    SETNEXTPAGE : function(state, res){
+      state.nextPage=res.name,
+      state.nextparams= res.params
     }
+
   },
   actions: {
     login: function({commit},res){
-      console.log(res);
+      // console.log('sdsdds');
+      // console.log(res);
       commit('LOGIN',res)
     },
-    logout: function({commit}){
-      commit('LOGOUT')
+    logout: function({commit}, res){
+      commit('LOGOUT',res)
     },
+    setNextPage : function({commit}, res){
+      commit('SETNEXTPAGE', res)
+    }
+
   },
   modules: {
   },

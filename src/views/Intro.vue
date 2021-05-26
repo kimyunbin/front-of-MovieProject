@@ -1,10 +1,12 @@
 <template>
   <section class="wrap" @click="toMoviesPage">
+
+    
     <div class="box">
-      <h2 >당신을 위한 영화를 찾아서</h2>
+      <h2 >이 영화 모야?</h2>
     </div>
     <div class="box" >
-      <h2 >당신을 위한 영화를 찾아서</h2>
+      <h2 >이 영화 모야?</h2>
     </div>
     
     <div class="circle"></div>
@@ -17,7 +19,6 @@ export default {
   name : 'Intro',
   methods : {
     toMoviesPage : function(){
-      console.log("asdfasdf")
       this.$router.push({name : 'Movies' })
     }
   }
@@ -37,7 +38,7 @@ window.addEventListener("load", function(){
 
 </script>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
 
 .wrap,
