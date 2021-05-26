@@ -6,6 +6,16 @@ export default {
       }
       return config
     },
+		loginCheck : function(token) {
+			return token
+		},
+		errorMessage : function(res) {
+			var message = ""
+			for (let key in res.data) {
+				message = message+ res.data[key] +"\n"
+			}
+			return message
+		}
   },
   filters : {
     imageURL : function (movie) {

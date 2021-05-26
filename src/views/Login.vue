@@ -42,9 +42,10 @@ import axios from 'axios'
 import _ from 'lodash'
 import { mapState } from 'vuex'
 import { mapActions } from 'vuex'
-
+import movieMixin from "@/mixins/movieMixin"
 
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
+
 export default {
   name : 'Login',
   data: function () {
@@ -58,11 +59,13 @@ export default {
       },
     }
   },
+  mixins : [movieMixin],
   props : {
     isToggle : {
       type:Boolean
     }
   },
+
   computed : {
     ...mapState([
       'nextPage',
@@ -101,14 +104,9 @@ export default {
           }else{
             this.$router.push({ name: 'Movies'})
           }
-          
-          // commit('LOGIN',res)
-          // localStorage.setItem('jwt', res.data.token)
-          // this.$emit('login')
-          // this.$router.push({ name: 'Intro' })
         })
         .catch(err => {
-          console.log(err)
+          alert(this.errorMessage(err.response))
         })
         
       }
@@ -131,9 +129,7 @@ export default {
           
         })
         .catch(err => {
-          console.log(err)
-          console.log(err.response)
-          alert(err.response.data.message)
+          alert(this.errorMessage(err.response))
         })
     },
     toggleForm : function (){
