@@ -110,7 +110,7 @@
 							<!-- <button class="ib ib2 ib_mono bt_vote_submit" onclick="" type="submit">
 								<i class="fas fa-heart pt_col"></i> + 등록
 							</button>											 -->
-							<button class="ib ib2 ib_color" type="submit">댓글 등록</button>
+							<button class="ib ib2 ib_color" type="submit" v-if ="token">댓글 등록</button>
 						</div>
 					</div>
 				</form>
@@ -135,10 +135,15 @@ import jwt_decode from "jwt-decode";
 import VueStar from 'vue-star'
 import movieMixin from "@/mixins/movieMixin"
 import CommentListItem from '@/components/CommentListItem'
-
+import { mapState } from 'vuex'
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 export default {
   name : "ReviewDetail",
+	computed : {
+    ...mapState([
+      'token'
+    ])
+  },
   components : {
     CommentListItem,
 		Gravatar,
