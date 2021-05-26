@@ -24,6 +24,7 @@ export default {
   name:'Mypage',
   components:{
     userInformation,
+<<<<<<< HEAD
     MovieCarousel,
   },
   mixins : [movieMixin],
@@ -44,11 +45,22 @@ export default {
           this.win_movies = res.data.winMovies
           this.like_movies = res.data.likeMovies
         })
+    },
+    loginCheck : function(){
+      if (!this.$store.state.token){
+        const detailItem ={
+          name: 'Mypage',
+          params: this.$route.params.username
+        }
+        this.$store.dispatch('setNextPage',detailItem)
+        this.$router.push({name : 'Login'})
+      }
     }
   },
   created : function(){
+    this.loginCheck()
     this.getMovies()
-  }
+  },
 }
 </script>
 

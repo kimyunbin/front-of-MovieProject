@@ -42,7 +42,8 @@
             </div>
           </div>
         </div>
-        <a href="javascript:void(0)" class="theme-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="icofont icofont-ticket"></i> 평가하기 </a>
+        
+        <a href="javascript:void(0)" class="theme-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" v-if="token"><i class="icofont icofont-ticket"></i> 평가하기 </a>
       </div>
     </div>
 
@@ -54,11 +55,6 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" style="padding: 15px 50px;">
-        <!-- <dd-form
-        :data="exampleDataSet"
-        :descriptions="exampleDescriptions"
-        >
-        </dd-form> -->
         <form>
           <div class="form-group">
             <label for="exampleFormControlInput1">Review Title</label>
@@ -103,11 +99,23 @@ import movieMixin from "@/mixins/movieMixin"
 import StarRating from 'vue-star-rating'
 // import ddForm from 'vue-dd-form';
 import axios from 'axios'
+import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 const BACKEND = process.env.VUE_APP_BACKEND_LINK
 // import ReviewWrite from "@/components/ReviewWrite.vue"
 
 export default {
   name : 'MovieDetailMain',
+  
+  computed : {
+    ...mapState([
+      'token'
+    ])
+  },
+  created: function () {
+
+    
+  },
   components : {
     StarRating,
     // ddForm
@@ -136,6 +144,20 @@ export default {
     }
   },
   methods: {
+    isLogin: function () {
+      if (!this.token){
+      const detailItem ={
+        name: 'movies',
+        params: this.$route.params.movie_pk
+      }
+      this.$store.dispatch('setNextPage',detailItem)
+      // this.setNextPage('MovieDetail',this.$route.params.movie_pk)
+      this.$router.push({name : 'Login'})
+      } 
+    },
+    ...mapActions([
+      'setNextPage'
+    ]),
     setToken: function () {
       const config = {
         Authorization: `JWT ${this.$store.state.token}`

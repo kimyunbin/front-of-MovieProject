@@ -65,7 +65,8 @@ export default {
   },
   computed : {
     ...mapState([
-      'nextPage'
+      'nextPage',
+      'nextparams'
     ])
   },
   methods: {
@@ -89,8 +90,14 @@ export default {
           this.$store.dispatch('login',res)
           // nextPage가 있다면 보내주기
           if (this.nextPage){
-            this.$router.push({ name: this.nextPage })
-            this.setNextPage('')
+            if (this.nextparams){
+              this.$router.push(`${this.nextPage}/${this.nextparams}`)
+              this.setNextPage('')
+            }else {
+              this.$router.push({ name: this.nextPage ,})
+              this.setNextPage('')
+
+            }
           }else{
             this.$router.push({ name: 'Movies'})
           }
@@ -138,9 +145,8 @@ export default {
 
   },
   created : function (){
-    console.log(this.isToggle)    
-    if(this.isToggle){
-      this.toggleForm()
+    if (this.$store.state.token){
+      this.$router.push({name : 'Movies'})
     }
   }
 
