@@ -10,8 +10,9 @@
         {{comment.user.username}}
       </a>															
       <div class="cmt_ctrl_wrap ctrl_wrap">
-        <button class="bt_cmt_ctrl bt_ctrl" type="button" onclick="openCtrl(this)">X
+        <button class="bt_cmt_ctrl bt_ctrl" type="button" @click="deleteComment">
           <!-- <i class="fas fa-ellipsis-h" title="댓글 메뉴"></i> -->
+          <i class="fas fa-times"></i>
         </button>						
         <div class="cmt_ctrl ctrl_body">
           <a class="bt" href="javascript:void(0)" onclick="insertWarn('권한이 없습니다.')">
@@ -86,7 +87,23 @@ export default {
       .catch(err => {
         console.log(err)
       })
-  },
+    },
+    deleteComment: function () {
+      axios({
+        method: 'delete',
+        url: `${BACKEND}community/comment/${this.comment.id}/delete/`,
+        headers: this.setToken()
+      })
+      .then(res => {
+        console.log(res)
+        this.$emit('deleteComment')
+      })
+      .catch(err => {
+        console.log(err.response)
+        alert('해당 작성자만 삭제할 수 있습니다.')
+      })
+    },
+    
   },
   created : function () {
     this.Commentliked = this.comment.like_users.length

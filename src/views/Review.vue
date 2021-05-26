@@ -1,6 +1,5 @@
 <template>
 <div class="background">
-  <span class= "ReviewText">Review</span>
   <ReviewDetail />
 </div>
 </template>

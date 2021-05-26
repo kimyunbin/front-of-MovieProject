@@ -102,6 +102,7 @@
             v-for="(comment, idx) in comments"
             :key ="idx"
             :comment="comment"
+						@deleteComment="updateComment"
             />
 			</div>
 			</div>
@@ -255,6 +256,9 @@ export default {
         .catch(err => {
           console.log(err)
         })
+		},
+		updateComment: function () {
+			this.test()
 		},
 		test : function () {
 			axios({
