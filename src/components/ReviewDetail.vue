@@ -1562,7 +1562,7 @@ font-size:12px
 }
 .atc_header h1
 {
-font-size:16px;
+font-size:25px;
 line-height:160%
 }
 .atc_header h1,.containerN .atc_header h1
