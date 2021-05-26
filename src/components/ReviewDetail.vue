@@ -176,9 +176,9 @@ export default {
   data: function () {
     return {
       detail : '',
-      like_users: '',
-      funny_users:'',
-      helpful_users: '',
+      like_users: '0',
+      funny_users:'0',
+      helpful_users: '0',
       comments: [],
 			commentContent: '',
 			useremail:'',
