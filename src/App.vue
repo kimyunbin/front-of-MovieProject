@@ -13,16 +13,13 @@
             <span class="navbar-nav" v-if="token">
 
               <li class="nav-item">
-                <router-link :to="{name: 'Movies'}" class="nav-link active" >Home</router-link>
-              </li>
-              <li class="nav-item">
                 <router-link to="#" class="nav-link active" @click.native="logout">Logout</router-link>
               </li>
               <li class="nav-item">
                 <router-link :to="`/mypage/${username}`" class="nav-link active">Mypage</router-link>
               </li>
               <li class="nav-item">
-                <router-link :to="`/tournament`" class="nav-link active">영화승부</router-link>
+                <router-link :to="`/tournament`" class="nav-link active">영화월드컵</router-link>
               </li>
             </span>
             <!--  로그아웃 시 보이는 것 -->
