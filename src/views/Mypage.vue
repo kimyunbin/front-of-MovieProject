@@ -2,7 +2,7 @@
   <div class="main" style="padding-top:55px;">
     <userInformation/>
     <div class="section">
-      <div class="section-header">영화 승부 우승작</div>
+      <div class="section-header">영화월드컵 우승작</div>
       <MovieCarousel :movies="win_movies"/>
     </div>
     <div class="section">
