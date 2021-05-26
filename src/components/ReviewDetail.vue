@@ -270,27 +270,6 @@ export default {
 				this.movie_like_users = res.data[1]
         this.detail = res.data[0]
         this.comments = res.data[0].comment_set
-        this.like_users = res.data[0].like_users
-        this.funny_users = res.data[0].funny_users
-        this.helpful_users = res.data[0].helpful_users
-				
-      })
-      .catch(err => {
-        console.log(err)
-      })
-		
-		},
-   
-  },
-  created: function () {
-    axios({
-        method: 'get',
-        url: `${BACKEND}community/${this.$route.params.detail}`,
-      })
-      .then(res => {
-        console.log(res)
-        this.detail = res.data[0]
-        this.comments = res.data[0].comment_set
         this.like_users = res.data[0].like_users.length
         this.funny_users = res.data[0].funny_users.length
         this.helpful_users = res.data[0].helpful_users.length
@@ -301,6 +280,12 @@ export default {
       .catch(err => {
         console.log(err)
       })
+		
+		},
+   
+  },
+  created: function () {
+    this.test()
 		
   }
 }
