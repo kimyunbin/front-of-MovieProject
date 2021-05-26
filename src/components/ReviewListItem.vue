@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="card" @click="detail">
-      <div class="card-image" v-bind:style="{backgroundImage:'url('+this.bgImg+')'}"></div>
+      <div class="card-image" v-bind:style="{backgroundImage:'url('+this.bgImg+')'}" ></div>
       <div class="card-text">
         <span class="date">{{review.created_at| timeFor}}</span>
         <h2>{{review.title}}</h2>
-        <p>{{review.content}}</p>
+        <p style="margin-top:15px;">{{review.content}}</p>
       </div>
       <div class="card-stats">
         <div class="stat">

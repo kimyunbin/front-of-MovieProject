@@ -9,7 +9,7 @@
 		<!-- 글제목 부분 -->
 		<header class="atc_header">
 			<h1>
-				<a href="" class="atc_title">{{detail.title}}</a>
+				<a href="javascript:void(0)" class="atc_title">{{detail.title}}</a>
 			</h1>
 			<div class="atc_info clearfix">
 				<span class="atc_nickname">
@@ -28,7 +28,7 @@
 		  <!-- 글 내용 부분 -->
 			<div class="document_65603779_42982247 rhymix_content xe_content" data-pswp-uid="1">
 				<p>
-					<img :src="detail.movie|imageURL" alt="movie_poster" data-pswp-pid="1">
+					<img :src="detail.movie|imageURL" alt="movie_poster" data-pswp-pid="1" @click="$router.push(`/movies/${detail.movie.id}`)">
 				</p>
         <br>
 				<p>{{detail.content}}</p>
