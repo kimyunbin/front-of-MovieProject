@@ -47,13 +47,6 @@
             </button>
 				</span>
 				<span class="atc_vote">
-						<!-- <button class="bt_vote vote_area" type="button" @click="funnyusers">
-							<vue-star animate="animated bounceIn" color="#F05654">
-    								<i slot="icon" class="far fa-grin-hearts"></i>
-							</vue-star>
-              <span class="voted_count text_en">{{funny_users}}</span>
-						</button> -->
-
 						<button class="bt_vote vote_area" type="button">
 							<VueStar animate="animated bounceIn" color="#F05654" :check="funny_users | checkChecked(login_user.id)" >
 								<i slot="icon" class="far fa-grin-hearts" ref="funnyusers"  @click="funnyusers"></i>
@@ -124,14 +117,7 @@
 						<textarea class="cmt_textarea" id="editor_65603779" cols="50" rows="4" placeholder="댓글 내용을 입력해주세요." style="width: 100%;" @keyup.enter="commentCreate" v-model="commentContent"></textarea>
 					</div>
 					<div class="cmt_write_option">
-						<!-- <button class="bt_write_type unit" type="button" onclick="">
-							<i class="fas fa-chevron-circle-right"></i> 에디터 모드
-						</button> -->
-						<!-- <span class="write_option"></span> -->
 						<div class="bt_area bt_right">
-							<!-- <button class="ib ib2 ib_mono bt_vote_submit" onclick="" type="submit">
-								<i class="fas fa-heart pt_col"></i> + 등록
-							</button>											 -->
 							<button class="ib ib2 ib_color" type="submit" v-if ="token">댓글 등록</button>
 						</div>
 					</div>
@@ -217,7 +203,6 @@ export default {
         })
     },
     funnyusers : function () {
-			// this.$refs.funnyusers.click()
       axios({
         method: 'post',
         url: `${BACKEND}community/${this.$route.params.detail}/funny/`,
@@ -289,8 +274,19 @@ export default {
       })
 		
 		},
+		loginCheck : function(){
+      if (!this.$store.state.token){
+        const detailItem ={
+          name: 'community',
+          params: this.$route.params.detail
+        }
+        this.$store.dispatch('setNextPage',detailItem)
+        this.$router.push({name : 'Login'})
+      }
+    }
   },
   created: function () {
+		this.loginCheck()
     this.getData()
 		
   }

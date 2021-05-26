@@ -11,7 +11,6 @@
         <div class="stat">
           <div v-if ="review.liked">
             <div class="value"><i class="far fa-grin"></i></div>
-            <!-- <div class="value">{{review.funny_users.length+review.like_users.length+review.helpful_users.length}}</div> -->
             <div class="type">추천</div>
           </div>
           <div v-else>

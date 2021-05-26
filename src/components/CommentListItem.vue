@@ -3,15 +3,11 @@
     
     <div class="inkpf_wrap">
       <span class="inkpf round"><Gravatar :email="comment.user.email" class="profile-img inkpf_img"/></span>					
-      <!-- <span class="cmt_rank cmt_rank1">1등</span>			 -->
     </div>
     <div class="cmt_header">
-      <a href="#popup_menu_area" class="nickname member_62105361" onclick="return false">
-        {{comment.user.username}}
-      </a>															
+      <router-link :to="{name : 'Mypage', params : {username: this.comment.user.username}}"  class="nickname member_62105361" onclick="return false">{{comment.user.username}}</router-link>
       <div class="cmt_ctrl_wrap ctrl_wrap">
         <button class="bt_cmt_ctrl bt_ctrl" type="button" @click="deleteComment">
-          <!-- <i class="fas fa-ellipsis-h" title="댓글 메뉴"></i> -->
           <i class="fas fa-times"></i>
         </button>						
         <div class="cmt_ctrl ctrl_body">
@@ -25,12 +21,8 @@
     <div class="cmt_body">
       <div class="comment_65603837_62105361 rhymix_content xe_content" data-pswp-uid="2">{{comment.content}}</div>								
       <div class="cmt_buttons"><div class="cmt_vote">
-        <!-- <a class="bt bt2" href="javascript:void(0)" onclick="insertWarn('권한이 없습니다.')">?</a> -->
-        <div class="bt_wrap" ><!--@click="likeComment"-->
-          <!-- <button class="text_en bt bt_vote" type="button" title="추천">
-            <i class="fas fa-heart" ></i> 
-            <span class="voted_count">{{Commentliked}}</span>
-          </button>																							 -->
+
+        <div class="bt_wrap" ><!--@click="likeComment"-->																						 
           <button class="text_en bt bt_vote" type="button" title="추천" >
             <VueStar animate="animated bounceIn" color="#F05654" :check="comment.like_users | checkChecked(loginUser.id)">
               <i slot="icon" class="fa fa-heart " @click="likeComment"></i>
@@ -40,7 +32,6 @@
         </div>
         </div></div>
         <div class="cmt_date_wrap text_en font_grey1">
-          <!-- <span class="cmt_time">18:12</span> -->
           <div class="cmt_date">{{comment.created_at | timeFor}}</div>
         </div>
     </div> 
@@ -89,7 +80,7 @@ export default {
       axios({
         method: 'delete',
         url: `${BACKEND}community/comment/${this.comment.id}/delete/`,
-        headers: this.setToken()
+        headers: this.setToken(this.$store.state.token)
       })
       .then(res => {
         console.log(res)
