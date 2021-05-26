@@ -9,8 +9,15 @@
       </div>
       <div class="card-stats">
         <div class="stat">
-          <div class="value">{{review.movie.vote_average}}</div>
-          <div class="type">average</div>
+          <div v-if ="review.liked">
+            <div class="value"><i class="far fa-grin"></i></div>
+            <!-- <div class="value">{{review.funny_users.length+review.like_users.length+review.helpful_users.length}}</div> -->
+            <div class="type">추천</div>
+          </div>
+          <div v-else>
+            <div class="value"><i class="far fa-angry"></i></div>
+            <div class="type">비추천</div>
+          </div>
         </div>
         <div class="stat borders">
             <div class="value">{{review.funny_users.length+review.like_users.length+review.helpful_users.length}}</div>

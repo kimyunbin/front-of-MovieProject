@@ -4,7 +4,7 @@
       <div class="user signinBx">
         <div class="imgBx"><img src="../assets/login/lock.jpg" alt="lockimg"></div>
         <div class="formBx">
-          <form v-on:submit.prevent="">
+          <form v-on:submit.prevent="login">
             <h2>Sign In</h2>
             <input type="text" placeholder="Username" id="loginUsername" v-model="credentials.username">
             <input type="password" placeholder="Password" id="loginPassword" v-model="credentials.password">
@@ -132,7 +132,7 @@ export default {
         })
         .catch(err => {
           console.log(err)
-          console.log(err.response)
+          console.log(err.response.data)
           alert(err.response.data.message)
         })
     },
