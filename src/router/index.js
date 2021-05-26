@@ -8,6 +8,7 @@ import MovieDetail from '@/views/MovieDetail.vue'
 import Community from '@/views/Community.vue'
 import Review from '@/views/Review.vue'
 import Tournament from '@/views/Tournament.vue'
+import PageNotFound from '@/views/PageNotFound.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -53,6 +54,15 @@ const routes = [
     name: 'Tournament',
     component: Tournament
   },
+  {
+    path: '/404',
+    name: '404Page',
+    component: PageNotFound
+  },
+  {
+    path : '*',
+    redirect : '/404'
+  }
 ]
 
 const router = new VueRouter({
