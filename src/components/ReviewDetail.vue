@@ -40,7 +40,7 @@
 			<div class="atc_buttons clearfix ">
 				<span class="atc_vote " >
 						<button class="bt_vote vote_area " type="button">
-							   <VueStar animate="animated bounceIn" color="#F05654"  >
+							   <VueStar animate="animated bounceIn" color="#F05654" :check="like_users | checkChecked(login_user.id)" >
     								<i slot="icon" class="fa fa-heart " @click="likeusers"></i>
 									</VueStar>
               <span class="voted_count text_en">{{like_users.length }}</span>
@@ -55,7 +55,7 @@
 						</button> -->
 
 						<button class="bt_vote vote_area" type="button">
-							<VueStar animate="animated bounceIn" color="#F05654" >
+							<VueStar animate="animated bounceIn" color="#F05654" :check="funny_users | checkChecked(login_user.id)" >
 								<i slot="icon" class="far fa-grin-hearts" ref="funnyusers"  @click="funnyusers"></i>
 							</VueStar>
               <span class="voted_count text_en">{{funny_users.length }}</span>
@@ -64,7 +64,7 @@
 				</span>
 				<span class="atc_vote">
 						<button class="bt_vote vote_area" type="button">
-							<VueStar animate="animated bounceIn" color="#F05654" :check="true" >
+							<VueStar animate="animated bounceIn" color="#F05654" :check="helpful_users | checkChecked(login_user.id)" >
 									<i slot="icon" class="fas fa-award" @click="helpfulusers"></i>
 									{{helpful_users}}
 							</VueStar>
@@ -102,6 +102,7 @@
             v-for="(comment, idx) in comments"
             :key ="idx"
             :comment="comment"
+						:loginUser ="login_user"
 						@deleteComment="updateComment"
             />
 			</div>
@@ -184,9 +185,16 @@ export default {
 			useremail:'',
 			isActive:'heart-active',
 			movie_like_users : [],
-
-    }
+			login_user : "",
+    }	
   },
+	filters : {
+		checkChecked : function(arr, id){
+			console.log(arr)
+			
+			return arr.includes(id)
+		}
+	},
   methods:{
     setToken: function () {
       const config = {
@@ -200,9 +208,8 @@ export default {
         url: `${BACKEND}community/${this.$route.params.detail}/like/`,
         headers: this.setToken(),
       })
-        .then(res => {
-          // console.log(res)
-          this.like_users = res.data.count
+        .then(() => {
+          this.getData()
         })
         .catch(err => {
 
@@ -216,9 +223,8 @@ export default {
         url: `${BACKEND}community/${this.$route.params.detail}/funny/`,
         headers: this.setToken(),
       })
-        .then(res => {
-          // console.log(res)
-          this.funny_users = res.data.count       
+        .then(() => {
+					this.getData()   
         })
         .catch(err => {
           console.log(err)
@@ -230,9 +236,8 @@ export default {
         url: `${BACKEND}community/${this.$route.params.detail}/helpful/`,
         headers: this.setToken(),
       })
-        .then(res => {
-          // console.log(res)
-          this.helpful_users = res.data.count        
+        .then(() => {
+					this.getData()
         })
         .catch(err => {
           console.log(err)
@@ -250,7 +255,7 @@ export default {
         .then(res => {
           console.log(res)
 					this.$set(this.comments,0,res.data.content)
-					this.test()
+					this.getData()
 					this.commentContent = ''
         })
         .catch(err => {
@@ -258,34 +263,35 @@ export default {
         })
 		},
 		updateComment: function () {
-			this.test()
+			this.getData()
 		},
-		test : function () {
+		getData : function () {
 			axios({
         method: 'get',
         url: `${BACKEND}community/${this.$route.params.detail}`,
+				headers: this.setToken(),
       })
       .then(res => {
-        // console.log(res)
+        console.log(res)
 				this.movie_like_users = res.data[1]
         this.detail = res.data[0]
         this.comments = res.data[0].comment_set
-        this.like_users = res.data[0].like_users.length
-        this.funny_users = res.data[0].funny_users.length
-        this.helpful_users = res.data[0].helpful_users.length
+        this.like_users = res.data[0].like_users
+        this.funny_users = res.data[0].funny_users
+        this.helpful_users = res.data[0].helpful_users
 				const decoded = jwt_decode(this.$store.state.token)
 		    this.useremail = decoded.email
 				this.movie_like_users = res.data[1]
+				this.login_user = res.data[2][0]
       })
       .catch(err => {
         console.log(err)
       })
 		
 		},
-   
   },
   created: function () {
-    this.test()
+    this.getData()
 		
   }
 }
@@ -2034,7 +2040,7 @@ color:#123123
 }
 .cmt_buttons .cmt_vote .bt_vote
 {
-color:#ec5e5e
+color:black;
 }
 
 .atc_vote .bt_vote

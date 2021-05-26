@@ -156,7 +156,10 @@ export default {
   },
   created : function(){
     if (!this.token){
-      this.setNextPage('Tournament')
+      const res = {
+        name : 'Tournament'
+      }
+      this.setNextPage(res)
       this.$router.push({name : 'Login'})
     } 
     this.getMovies()
