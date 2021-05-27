@@ -104,7 +104,7 @@
 			<!-- 댓글 작성부분 -->
 			<div class="cmt_write cmt_write_unit" v-if ="token">
 				<span class="inkpf round"><Gravatar :email="useremail" class="profile-img inkpf_img"/></span>
-				<form v-on:submit.prevent="commentCreate" action="/" method="post" class="cmt_form" onsubmit="" editor_sequence="65603779">
+				<form v-on:submit.prevent="" action="/" method="post" class="cmt_form" onsubmit="" editor_sequence="65603779">
 					<input type="hidden" name="error_return_url" value="/movietalk/65603779?category=376">
 					<input type="hidden" name="act" value="dispBoardContent">
 					<input type="hidden" name="mid" value="movietalk">
@@ -118,7 +118,7 @@
 					</div>
 					<div class="cmt_write_option">
 						<div class="bt_area bt_right">
-							<button class="ib ib2 ib_color" type="submit" v-if ="token">댓글 등록</button>
+							<button class="ib ib2 ib_color" type="submit" v-if ="token" @click="commentCreate">댓글 등록</button>
 						</div>
 					</div>
 				</form>
