@@ -44,6 +44,10 @@ export default {
           this.win_movies = res.data.winMovies
           this.like_movies = res.data.likeMovies
         })
+        .catch(() =>{
+          alert("없는 회원 정보입니다.")
+          this.$router.push({name : 'Movies'})
+        })
     },
     loginCheck : function(){
       if (!this.$store.state.token){

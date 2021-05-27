@@ -66,10 +66,7 @@ export default {
             this.page++
             this.dupCheck = true
           })
-          .catch(err => {
-            console.log('sdsdsd');
-            console.log(err)
-          })
+
 
       }
     }
