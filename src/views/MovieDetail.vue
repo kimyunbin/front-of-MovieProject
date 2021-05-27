@@ -39,8 +39,9 @@ export default {
           this.movie = res.data['movie'][0]
           this.same_genres = res.data.same_genres
         })
-        .catch((err) => {
-          console.log(err)
+        .catch(() => {
+          alert("없는 영화 정보입니다.")
+          this.$router.push({name : 'Movies'})
         })
     }
   },

@@ -200,7 +200,7 @@ section .container .user .imgBx
   position: relative;
   width: 50%;
   height: 100%;
-  transition: 0.5;
+  transition: 1s;
 }
 section .container .user .imgBx img
 {
@@ -222,7 +222,7 @@ section .container .user .formBx
   justify-content: center;
   align-items: center;
   padding: 40px;
-  transition: 0.5s;
+  transition: 1s;
 }
 section .container .user .formBx h2
 {
@@ -305,7 +305,7 @@ section .container.active .signupBx .formBx
 section .container .signupBx .imgBx
 {
   top:-100%;
-  transition: 0.5s;
+  transition: 1s;
 }
 section .container.active .signupBx .imgBx
 {
@@ -324,7 +324,7 @@ section .container.active .signinBx .formBx
 section .container .signinBx .imgBx
 {
   top:0;
-  transition: 0.5s;
+  transition: 1s;
 }
 section .container.active .signinBx .imgBx
 {
