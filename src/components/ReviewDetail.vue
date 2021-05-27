@@ -243,8 +243,9 @@ export default {
 					this.getData()
 					this.commentContent = ''
         })
-        .catch(err => {
-          console.log(err)
+        .catch(() => {
+          alert("없는 리뷰 글입니다.")
+          this.$router.push({name : 'Movies'})
         })
 		},
 		updateComment: function () {
@@ -269,10 +270,6 @@ export default {
 				this.movie_like_users = res.data[1]
 				this.login_user = res.data[2][0]
       })
-      .catch(() => {
-				alert("없는 리뷰글 입니다.")
-				this.$router.push({name : 'Community'})
-      })
 		
 		},
 		loginCheck : function(){
@@ -288,7 +285,9 @@ export default {
   },
   created: function () {
 		this.loginCheck()
-    this.getData()
+		this.getData()
+		
+    
 		
   }
 }
